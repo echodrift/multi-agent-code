@@ -12,10 +12,17 @@ from dotenv import load_dotenv
 from tqdm import tqdm
 
 CWD = os.path.abspath(os.path.dirname(__file__))
-load_dotenv()
+load_dotenv(override=True)
+# Setting API parameters
+openai.api_base = "https://api.deepseek.com"
+openai.api_key = os.getenv("OPENAI_API_KEY")
+dataset = load_dataset("openai_humaneval", split="test")
+dataset = [entry for entry in dataset]
+prompt_path = f"{CWD}/prompts/tester_prompt_humaneval.txt"
+with open(prompt_path, "r") as f:
+    construct_few_shot_prompt = f.read()
 
-
-def preprocess_data(test_case_string: str, language: str):
+def preprocess_data(test_case_string: str, language: str="python"):
     if f"```{language}" in test_case_string:
         test_case_string = test_case_string[
             test_case_string.find(f"```{language}") + len(f"```{language}") :
@@ -83,9 +90,9 @@ def call_fetch_test_completion_helper(
             executor.submit(
                 fetch_completion, copy.deepcopy(entry), model, language
             ): entry
-            for entry in tqdm(dataset)
+            for entry in tqdm(dataset, desc="Generating test", total=len(dataset))
         }
-        for future in tqdm(concurrent.futures.as_completed(future_to_entry)):
+        for future in tqdm(concurrent.futures.as_completed(future_to_entry), desc="Updating test", total=len(dataset)):
             entry = future_to_entry[future]
             try:
                 updated_entry = future.result()
@@ -97,18 +104,8 @@ def call_fetch_test_completion_helper(
 
 
 if __name__ == "__main__":
-    # Setting API parameters
-    openai.api_base = "https://api.deepseek.com"
-    openai.api_key = os.getenv("OPENAI_API_KEY")
-
-    dataset = load_dataset("openai_humaneval", split="test")
-    dataset = [entry for entry in dataset]
-
-    prompt_path = f"{CWD}/prompts/tester_prompt_humaneval.txt"
-    with open(prompt_path, "r") as f:
-        construct_few_shot_prompt = f.read()
     model = "deepseek-coder"
-    language = "{language}"
+    language = "python"
     with open(f"{CWD}/data/{model}_{language}.json", "r") as f:
         dataset = json.load(f)
     dataset = [entry for entry in dataset]

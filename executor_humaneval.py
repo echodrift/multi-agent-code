@@ -4,18 +4,17 @@ import json
 import os
 import sys
 
-
 CWD = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(f"{CWD}/CodeGeeX/")
 import concurrent.futures
 import signal
 
 from codegeex.benchmark.execution import check_correctness
-from codegeex.benchmark.utils import IMPORT_HELPER, read_dataset
+from codegeex.benchmark.utils import IMPORT_HELPER
 from tqdm import tqdm
 
-from coder import call_fetch_completion_helper
-from tester import call_fetch_test_completion_helper
+from coder_humaneval import call_fetch_completion_helper
+from tester_humaneval import call_fetch_test_completion_helper
 
 
 class TimeoutException(Exception):
@@ -107,7 +106,7 @@ def process_humaneval_test(
     return test_string
 
 
-def preprocess_data(task, language):
+def preprocess_data(task, language: str="python"):
     if f"```{language}" in task["completion"]:
         task["completion"] = task["completion"][
             task["completion"].find(f"```{language}") + len(f"```{language}") :
@@ -140,7 +139,7 @@ def preprocess_data(task, language):
 def test_report(dataset, language="python"):
     correct = 0
     test_setup = "\n".join(IMPORT_HELPER[language]) + "\n"
-    for i in tqdm(range(len(dataset))):
+    for i in tqdm(range(len(dataset)), desc="Executing code"):
         try:
             with swallow_io():
                 with time_limit(2.0):
@@ -237,23 +236,23 @@ def test_agent_concurrency(dataset, language):
 if __name__ == "__main__":
     model = "deepseek-coder"
     language = "python"
-   
+
     # path = f"{CWD}/data/{model}_{language}.json"
-    path = "/home/lvdthieu/Documents/Projects/vdt-multi-agent/data/deepseek-coder_2.json"
+    path = "/home/hieuvd/lvdthieu/tempo/vdt-multi-agent/data/deepseek-coder_2.json"
     with open(path, "r") as f:
         dataset = json.load(f)
     epoch = 5
-    for current_epoch in tqdm(range(3, epoch)):
-        dataset = test_agent_concurrency(dataset,language)
-        test_report(dataset,language)
-        dataset = call_fetch_completion_helper(dataset,model,language)
-        dataset = call_fetch_test_completion_helper(dataset,model,language)
+    for current_epoch in tqdm(range(3, epoch), desc="Epoch"):
+        dataset = test_agent_concurrency(dataset, language)
+        test_report(dataset, language)
+        dataset = call_fetch_completion_helper(dataset, model, language)
+        dataset = call_fetch_test_completion_helper(dataset, model, language)
         with open(f"{CWD}/data/{model}_{current_epoch}.json", "w") as f:
             json.dump(dataset, f, indent=4)
 
-    dataset = test_agent_concurrency(dataset,language)
-    test_report(dataset,language)
-    with open("{CWD}/dataset/deepseek-coder_python.json", "r") as f:
+    dataset = test_agent_concurrency(dataset, language)
+    test_report(dataset, language)
+    with open(f"{CWD}/data/deepseek-coder_python.json", "r") as f:
         dataset = json.load(f)
     for i in range(len(dataset)):
         dataset[i]["completion"] = dataset[i]["completion_list"][0]
