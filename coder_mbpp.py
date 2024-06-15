@@ -127,7 +127,6 @@ def call_fetch_completion(
 if __name__ == "__main__":
     model = "deepseek-coder"
     language = "python"
-    dataset = dataset[0:10]
     with ThreadPoolExecutor(max_workers=20) as executor:
         future_to_entry = {
             executor.submit(
