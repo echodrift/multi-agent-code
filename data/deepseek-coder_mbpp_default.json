@@ -9,8 +9,7 @@
             "assert remove_Occ(\"hello\",\"l\") == \"heo\"",
             "assert remove_Occ(\"abcda\",\"a\") == \"bcd\"",
             "assert remove_Occ(\"PHP\",\"P\") == \"H\""
-        ],
-        "completion": "\ndef remove_Occ(s, ch):\n    # Find and remove the first occurrence of ch\n    for i in range(len(s)):\n        if s[i] == ch:\n            s = s[:i] + s[i+1:]\n            break\n    \n    # Reverse the string to find and remove the last occurrence of ch\n    reversed_s = s[::-1]\n    for i in range(len(reversed_s)):\n        if reversed_s[i] == ch:\n            reversed_s = reversed_s[:i] + reversed_s[i+1:]\n            break\n    \n    # Reverse the string back to its original order\n    s = reversed_s[::-1]\n    return s\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -22,8 +21,7 @@
             "assert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]",
             "assert sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1, 1]])==[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]",
             "assert sort_matrix([[5,8,9],[6,4,3],[2,1,4]])==[[2, 1, 4], [6, 4, 3], [5, 8, 9]]"
-        ],
-        "completion": "\ndef sort_matrix(M):\n    result = sorted(M, key=sum)\n    return result\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -35,8 +33,7 @@
             "assert find_Volume(10,8,6) == 240",
             "assert find_Volume(3,2,2) == 6",
             "assert find_Volume(1,2,1) == 1"
-        ],
-        "completion": "\n   def find_Volume(base, height_triangle, height_prism):\n       base_area = 0.5 * base * height_triangle\n       volume = base_area * height_prism\n       return volume\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -48,8 +45,7 @@
             "assert text_lowercase_underscore(\"aab_cbbbc\")==(True)",
             "assert text_lowercase_underscore(\"aab_Abbbc\")==(False)",
             "assert text_lowercase_underscore(\"Aaab_abbbc\")==(False)"
-        ],
-        "completion": "\n   import re\n\n   def text_lowercase_underscore(input_string):\n       # Regular expression to match sequences of lowercase letters joined by underscores\n       pattern = r'^[a-z]+(_[a-z]+)*$'\n       if re.match(pattern, input_string):\n           return True\n       else:\n           return False\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -61,8 +57,7 @@
             "assert square_perimeter(10)==40",
             "assert square_perimeter(5)==20",
             "assert square_perimeter(4)==16"
-        ],
-        "completion": "\n   def square_perimeter(side_length):\n       return side_length * 4\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -74,8 +69,7 @@
             "assert remove_dirty_chars(\"probasscurve\", \"pros\") == 'bacuve'",
             "assert remove_dirty_chars(\"digitalindia\", \"talent\") == 'digiidi'",
             "assert remove_dirty_chars(\"exoticmiles\", \"toxic\") == 'emles'"
-        ],
-        "completion": "\n   def remove_dirty_chars(str1, str2):\n       # Create a set of characters from str2 for O(1) lookup\n       set_str2 = set(str2)\n       # Initialize an empty result string\n       result = \"\"\n       # Iterate through each character in str1\n       for char in str1:\n           # If the character is not in the set of str2, append it to the result\n           if char not in set_str2:\n               result += char\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -87,8 +81,7 @@
             "assert test_duplicate(([1,2,3,4,5]))==False",
             "assert test_duplicate(([1,2,3,4, 4]))==True",
             "assert test_duplicate([1,1,2,2,3,3,4,4,5])==True"
-        ],
-        "completion": "\n   def test_duplicate(arr):\n       seen = set()\n       for element in arr:\n           if element in seen:\n               return True\n           seen.add(element)\n       return False\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -100,8 +93,7 @@
             "assert is_woodall(383) == True",
             "assert is_woodall(254) == False",
             "assert is_woodall(200) == False"
-        ],
-        "completion": "\n   def is_woodall(number):\n       n = 1\n       while True:\n           woodall_candidate = n * (2 ** n) - 1\n           if woodall_candidate == number:\n               return True\n           if woodall_candidate > number:\n               return False\n           n += 1\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -113,8 +105,7 @@
             "assert check(70) == False",
             "assert check(23) == False",
             "assert check(73) == True"
-        ],
-        "completion": "\ndef reverse_number(num):\n    rev = 0\n    while num > 0:\n        rev = rev * 10 + num % 10\n        num = num // 10\n    return rev\n\ndef check(number):\n    reverse_num = reverse_number(number)\n    twice_reverse = 2 * reverse_num\n    return number == twice_reverse - 1\n\n# Test cases\nassert check(70) == False\nassert check(23) == False\nassert check(73) == True\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -126,8 +117,7 @@
             "assert find_Max_Num([1,2,3]) == 321",
             "assert find_Max_Num([4,5,6,1]) == 6541",
             "assert find_Max_Num([1,2,3,9]) == 9321"
-        ],
-        "completion": "\n   def find_Max_Num(digits):\n       # Sort the digits in descending order\n       sorted_digits = sorted(digits, reverse=True)\n       # Combine the sorted digits into a single number\n       result = int(''.join(map(str, sorted_digits)))\n       return result\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -140,8 +130,7 @@
             "assert opposite_Signs(3,2) == False",
             "assert opposite_Signs(-10,-10) == False",
             "assert opposite_Signs(-2,2) == True"
-        ],
-        "completion": "\n   def opposite_Signs(x, y):\n       return (x * y) < 0\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -153,8 +142,7 @@
             "assert is_octagonal(5) == 65",
             "assert is_octagonal(10) == 280",
             "assert is_octagonal(15) == 645"
-        ],
-        "completion": "\ndef is_octagonal(n):\n    return 3 * n * n - 2 * n\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -166,8 +154,7 @@
             "assert count_Substrings('112112') == 6",
             "assert count_Substrings('111') == 6",
             "assert count_Substrings('1101112') == 12"
-        ],
-        "completion": "\n   def count_Substrings(s):\n       def sum_of_digits(substring):\n           return sum(int(char) for char in substring)\n       \n       count = 0\n       for i in range(len(s)):\n           for j in range(i+1, len(s)+1):\n               substring = s[i:j]\n               if sum_of_digits(substring) == len(substring):\n                   count += 1\n       return count\n\n   # Test cases\n   assert count_Substrings('112112') == 6\n   assert count_Substrings('111') == 6\n   assert count_Substrings('1101112') == 12\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -179,8 +166,7 @@
             "assert smallest_num([10, 20, 1, 45, 99]) == 1",
             "assert smallest_num([1, 2, 3]) == 1",
             "assert smallest_num([45, 46, 50, 60]) == 45"
-        ],
-        "completion": "\ndef smallest_num(lst):\n    return min(lst)\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -192,8 +178,7 @@
             "assert max_difference([(3, 5), (1, 7), (10, 3), (1, 2)]) == 7",
             "assert max_difference([(4, 6), (2, 17), (9, 13), (11, 12)]) == 15",
             "assert max_difference([(12, 35), (21, 27), (13, 23), (41, 22)]) == 23"
-        ],
-        "completion": "\n   def max_difference(tuple_list):\n       max_diff = 0\n       for pair in tuple_list:\n           diff = abs(pair[0] - pair[1])\n           if diff > max_diff:\n               max_diff = diff\n       return max_diff\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -205,8 +190,7 @@
             "assert subject_marks([('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)])==[('Social sciences', 82), ('English', 88), ('Science', 90), ('Maths', 97)]",
             "assert subject_marks([('Telugu',49),('Hindhi',54),('Social',33)])==([('Social',33),('Telugu',49),('Hindhi',54)])",
             "assert subject_marks([('Physics',96),('Chemistry',97),('Biology',45)])==([('Biology',45),('Physics',96),('Chemistry',97)])"
-        ],
-        "completion": "\ndef subject_marks(tuples_list):\n    sorted_list = sorted(tuples_list, key=lambda x: x[1])\n    return sorted_list\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -218,8 +202,7 @@
             "assert recursive_list_sum(([1, 2, [3,4],[5,6]]))==21",
             "assert recursive_list_sum(([7, 10, [15,14],[19,41]]))==106",
             "assert recursive_list_sum(([10, 20, [30,40],[50,60]]))==210"
-        ],
-        "completion": "\n   def recursive_list_sum(lst):\n       total_sum = 0\n       for element in lst:\n           if isinstance(element, list):\n               total_sum += recursive_list_sum(element)\n           else:\n               total_sum += element\n       return total_sum\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -231,8 +214,7 @@
             "assert pos_count([1,-2,3,-4]) == 2",
             "assert pos_count([3,4,5,-1]) == 3",
             "assert pos_count([1,2,3,4]) == 4"
-        ],
-        "completion": "\n   def pos_count(lst):\n       count = 0\n       for num in lst:\n           if num > 0:\n               count += 1\n       return count\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -244,8 +226,7 @@
             "assert bell_number(2)==2",
             "assert bell_number(10)==115975",
             "assert bell_number(56)==6775685320645824322581483068371419745979053216268760300"
-        ],
-        "completion": "\ndef bell_number(n):\n    if n == 0:\n        return 1\n    \n    # Initialize the Bell triangle\n    bell_triangle = [[1]]\n    \n    for i in range(1, n):\n        new_row = [bell_triangle[i-1][-1]]\n        for j in range(1, i+1):\n            new_row.append(new_row[j-1] + bell_triangle[i-1][j-1])\n        bell_triangle.append(new_row)\n    \n    return bell_triangle[-1][-1]\n\n# Test cases\nassert bell_number(2) == 2\nassert bell_number(10) == 115975\nassert bell_number(56) == 6775685320645824322581483068371419745979053216268760300\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -257,8 +238,7 @@
             "assert is_Monotonic([6, 5, 4, 4]) == True",
             "assert is_Monotonic([1, 2, 2, 3]) == True",
             "assert is_Monotonic([1, 3, 2]) == False"
-        ],
-        "completion": "\n   def is_Monotonic(arr):\n       is_non_decreasing = True\n       is_non_increasing = True\n       \n       for i in range(1, len(arr)):\n           if arr[i] < arr[i - 1]:\n               is_non_decreasing = False\n           if arr[i] > arr[i - 1]:\n               is_non_increasing = False\n       \n       return is_non_decreasing or is_non_increasing\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -270,8 +250,7 @@
             "assert is_sublist([2,4,3,5,7],[3,7])==False",
             "assert is_sublist([2,4,3,5,7],[4,3])==True",
             "assert is_sublist([2,4,3,5,7],[1,6])==False"
-        ],
-        "completion": "\n   def is_sublist(main_list, sub_list):\n       if not sub_list:\n           return True\n       if not main_list:\n           return False\n       if len(sub_list) > len(main_list):\n           return False\n       \n       for i in range(len(main_list) - len(sub_list) + 1):\n           if main_list[i] == sub_list[0]:\n               for j in range(len(sub_list)):\n                   if main_list[i + j] != sub_list[j]:\n                       break\n                   if j == len(sub_list) - 1:\n                       return True\n       return False\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -283,8 +262,7 @@
             "assert get_equal([(11, 22, 33), (44, 55, 66)]) == True",
             "assert get_equal([(1, 2, 3), (4, 5, 6, 7)]) == False",
             "assert get_equal([(1, 2), (3, 4)]) == True"
-        ],
-        "completion": "\n   def get_equal(tuples):\n       if not tuples:  # If the list is empty, return True\n           return True\n       first_length = len(tuples[0])  # Get the length of the first tuple\n       for tup in tuples:\n           if len(tup) != first_length:  # Compare each tuple's length to the first one\n               return False\n       return True\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -296,8 +274,7 @@
             "assert comb_sort([5, 15, 37, 25, 79]) == [5, 15, 25, 37, 79]",
             "assert comb_sort([41, 32, 15, 19, 22]) == [15, 19, 22, 32, 41]",
             "assert comb_sort([99, 15, 13, 47]) == [13, 15, 47, 99]"
-        ],
-        "completion": "\n   def comb_sort(arr):\n       gap = len(arr)\n       shrink_factor = 1.3\n       sorted = False\n\n       while not sorted:\n           gap = int(gap / shrink_factor)\n           if gap <= 1:\n               gap = 1\n               sorted = True\n\n           i = 0\n           while i + gap < len(arr):\n               if arr[i] > arr[i + gap]:\n                   arr[i], arr[i + gap] = arr[i + gap], arr[i]\n                   sorted = False\n               i += 1\n\n       return arr\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -309,8 +286,7 @@
             "assert dif_Square(5) == True",
             "assert dif_Square(10) == False",
             "assert dif_Square(15) == True"
-        ],
-        "completion": "\n   def dif_Square(n):\n       if n % 2 != 0:  # n is odd\n           return True\n       if n % 4 == 0:  # n is a multiple of 4\n           return True\n       return False\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -322,8 +298,7 @@
             "assert is_samepatterns([\"red\",\"green\",\"green\"], [\"a\", \"b\", \"b\"])==True",
             "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\",\"b\"])==False",
             "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\"])==False"
-        ],
-        "completion": "\ndef is_samepatterns(colors, patterns):\n    if len(colors) != len(patterns):\n        return False\n    \n    color_to_pattern = {}\n    pattern_to_color = {}\n    \n    for color, pattern in zip(colors, patterns):\n        if color in color_to_pattern:\n            if color_to_pattern[color] != pattern:\n                return False\n        else:\n            color_to_pattern[color] = pattern\n        \n        if pattern in pattern_to_color:\n            if pattern_to_color[pattern] != color:\n                return False\n        else:\n            pattern_to_color[pattern] = color\n    \n    return True\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -335,8 +310,7 @@
             "assert find_tuples([(6, 24, 12), (7, 9, 6), (12, 18, 21)], 6) == [(6, 24, 12)]",
             "assert find_tuples([(5, 25, 30), (4, 2, 3), (7, 8, 9)], 5) == [(5, 25, 30)]",
             "assert find_tuples([(7, 9, 16), (8, 16, 4), (19, 17, 18)], 4) == [(8, 16, 4)]"
-        ],
-        "completion": "\n   def find_tuples(list_of_tuples, k):\n       result = []\n       for tup in list_of_tuples:\n           if all(element % k == 0 for element in tup):\n               result.append(tup)\n       return result\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -348,8 +322,7 @@
             "assert is_Diff (12345) == False",
             "assert is_Diff(1212112) == True",
             "assert is_Diff(1212) == False"
-        ],
-        "completion": "\n   def is_Diff(number):\n       num_str = str(number)\n       odd_sum = 0\n       even_sum = 0\n       for i, digit in enumerate(num_str):\n           if i % 2 == 0:  # Even index (considering 0 as even)\n               even_sum += int(digit)\n           else:  # Odd index\n               odd_sum += int(digit)\n       difference = odd_sum - even_sum\n       return difference % 11 == 0\n\n   # Test cases\n   assert is_Diff(12345) == False\n   assert is_Diff(1212112) == True\n   assert is_Diff(1212) == False\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -361,8 +334,7 @@
             "assert word_len(\"Hadoop\") == False",
             "assert word_len(\"great\") == True",
             "assert word_len(\"structure\") == True"
-        ],
-        "completion": "\ndef word_len(word):\n    length = len(word)\n    if length % 2 == 1:\n        return True\n    else:\n        return False\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -374,8 +346,7 @@
             "assert tetrahedral_number(5) == 35",
             "assert tetrahedral_number(6) == 56",
             "assert tetrahedral_number(7) == 84"
-        ],
-        "completion": "\ndef tetrahedral_number(n):\n    # Calculate the nth tetrahedral number using the formula\n    result = n * (n + 1) * (n + 2) // 6\n    return result\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -389,8 +360,7 @@
             "assert math.isclose(volume_sphere(10), 4188.790204786391, rel_tol=0.001)",
             "assert math.isclose(volume_sphere(25), 65449.84694978735, rel_tol=0.001)",
             "assert math.isclose(volume_sphere(20), 33510.32163829113, rel_tol=0.001)"
-        ],
-        "completion": "\n   import math\n\n   def volume_sphere(radius):\n       volume = (4/3) * math.pi * (radius ** 3)\n       return volume\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -402,8 +372,7 @@
             "assert get_Char(\"abc\") == \"f\"",
             "assert get_Char(\"gfg\") == \"t\"",
             "assert get_Char(\"ab\") == \"c\""
-        ],
-        "completion": "\n   def get_Char(s):\n       # Initialize sum of ASCII values\n       ascii_sum = 0\n       \n       # Iterate through each character in the string\n       for char in s:\n           ascii_sum += ord(char)\n       \n       # Calculate sum modulo 26\n       result_char = ascii_sum % 26\n       \n       # Convert to character by adding to ASCII value of 'a'\n       result_char = chr(result_char + ord('a'))\n       \n       return result_char\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -415,8 +384,7 @@
             "assert sequence(10) == 6",
             "assert sequence(2) == 1",
             "assert sequence(3) == 2"
-        ],
-        "completion": "\n   def sequence(n):\n       if n == 1 or n == 2:\n           return 1\n       \n       dp = [0] * (n + 1)\n       dp[1] = 1\n       dp[2] = 1\n       \n       for i in range(3, n + 1):\n           dp[i] = dp[dp[i - 1]] + dp[i - dp[i - 1]]\n       \n       return dp[n]\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -430,8 +398,7 @@
             "assert math.isclose(surfacearea_sphere(10), 1256.6370614359173, rel_tol=0.001)",
             "assert math.isclose(surfacearea_sphere(15), 2827.4333882308138, rel_tol=0.001)",
             "assert math.isclose(surfacearea_sphere(20), 5026.548245743669, rel_tol=0.001)"
-        ],
-        "completion": "\nimport math\n\ndef surfacearea_sphere(radius):\n    surface_area = 4 * math.pi * math.pow(radius, 2)\n    return surface_area\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -443,8 +410,7 @@
             "assert centered_hexagonal_number(10) == 271",
             "assert centered_hexagonal_number(2) == 7",
             "assert centered_hexagonal_number(9) == 217"
-        ],
-        "completion": "\n   def centered_hexagonal_number(n):\n       return 3 * n * (n - 1) + 1\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -456,8 +422,7 @@
             "assert merge_dictionaries_three({ \"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\" }, { \"G\": \"Green\", \"W\": \"White\" },{ \"O\": \"Orange\", \"W\": \"White\", \"B\": \"Black\" })=={'B': 'Black', 'R': 'Red', 'P': 'Pink', 'G': 'Green', 'W': 'White', 'O': 'Orange'}",
             "assert merge_dictionaries_three({ \"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\" }, { \"G\": \"Green\", \"W\": \"White\" },{\"L\":\"lavender\",\"B\":\"Blue\"})=={'W': 'White', 'P': 'Pink', 'B': 'Black', 'R': 'Red', 'G': 'Green', 'L': 'lavender'}",
             "assert merge_dictionaries_three({ \"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\" },{\"L\":\"lavender\",\"B\":\"Blue\"},{ \"G\": \"Green\", \"W\": \"White\" })=={'B': 'Black', 'P': 'Pink', 'R': 'Red', 'G': 'Green', 'L': 'lavender', 'W': 'White'}"
-        ],
-        "completion": "\n   def merge_dictionaries_three(dict1, dict2, dict3):\n       result = dict1.copy()\n       result.update(dict2)\n       result.update(dict3)\n       return result\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -469,8 +434,7 @@
             "assert freq_count([10,10,10,10,20,20,20,20,40,40,50,50,30])==({10: 4, 20: 4, 40: 2, 50: 2, 30: 1})",
             "assert freq_count([1,2,3,4,3,2,4,1,3,1,4])==({1:3, 2:2,3:3,4:3})",
             "assert freq_count([5,6,7,4,9,10,4,5,6,7,9,5])==({10:1,5:3,6:2,7:2,4:2,9:2})"
-        ],
-        "completion": "\n   def freq_count(lst):\n       freq_dict = {}\n       for element in lst:\n           if element in freq_dict:\n               freq_dict[element] += 1\n           else:\n               freq_dict[element] = 1\n       return freq_dict\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -482,8 +446,7 @@
             "assert closest_num(11) == 10",
             "assert closest_num(7) == 6",
             "assert closest_num(12) == 11"
-        ],
-        "completion": "\n   def closest_num(n):\n       return n - 1\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -495,8 +458,7 @@
             "assert len_log([\"python\",\"PHP\",\"bigdata\"]) == 7",
             "assert len_log([\"a\",\"ab\",\"abc\"]) == 3",
             "assert len_log([\"small\",\"big\",\"tall\"]) == 5"
-        ],
-        "completion": "\ndef len_log(words):\n    max_length = 0\n    for word in words:\n        if len(word) > max_length:\n            max_length = len(word)\n    return max_length\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -508,8 +470,7 @@
             "assert find_substring([\"red\", \"black\", \"white\", \"green\", \"orange\"],\"ack\")==True",
             "assert find_substring([\"red\", \"black\", \"white\", \"green\", \"orange\"],\"abc\")==False",
             "assert find_substring([\"red\", \"black\", \"white\", \"green\", \"orange\"],\"ange\")==True"
-        ],
-        "completion": "\n   def find_substring(list_of_strings, substring):\n       for string in list_of_strings:\n           if substring in string:\n               return True\n       return False\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -521,8 +482,7 @@
             "assert is_undulating(1212121) == True",
             "assert is_undulating(1991) == False",
             "assert is_undulating(121) == True"
-        ],
-        "completion": "\n   def is_undulating(number):\n       num_str = str(number)\n       \n       if len(num_str) < 3:\n           return False\n       \n       first_digit = num_str[0]\n       second_digit = num_str[1]\n       \n       if first_digit == second_digit:\n           return False\n       \n       for i in range(2, len(num_str)):\n           if i % 2 == 0:\n               if num_str[i] != first_digit:\n                   return False\n           else:\n               if num_str[i] != second_digit:\n                   return False\n       \n       return True\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -534,8 +494,7 @@
             "assert power(3,4) == 81",
             "assert power(2,3) == 8",
             "assert power(5,5) == 3125"
-        ],
-        "completion": "\ndef power(a, b):\n    return a ** b\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -547,8 +506,7 @@
             "assert index_minimum([('Rash', 143), ('Manjeet', 200), ('Varsha', 100)]) == 'Varsha'",
             "assert index_minimum([('Yash', 185), ('Dawood', 125), ('Sanya', 175)]) == 'Dawood'",
             "assert index_minimum([('Sai', 345), ('Salman', 145), ('Ayesha', 96)]) == 'Ayesha'"
-        ],
-        "completion": "\n   def index_minimum(tuples_list):\n       min_tuple = tuples_list[0]\n       for tup in tuples_list:\n           if tup[1] < min_tuple[1]:\n               min_tuple = tup\n       return min_tuple[0]\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -560,8 +518,7 @@
             "assert Find_Min_Length([[1],[1,2]]) == 1",
             "assert Find_Min_Length([[1,2],[1,2,3],[1,2,3,4]]) == 2",
             "assert Find_Min_Length([[3,3,3],[4,4,4,4]]) == 3"
-        ],
-        "completion": "\n   def Find_Min_Length(list_of_lists):\n       min_length = float('inf')  # Initialize to a large number\n       for sublist in list_of_lists:\n           current_length = len(sublist)\n           if current_length < min_length:\n               min_length = current_length\n       return min_length\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -573,8 +530,7 @@
             "assert divisor(15) == 4",
             "assert divisor(12) == 6",
             "assert divisor(9) == 3"
-        ],
-        "completion": "\n   def divisor(n):\n       count = 0\n       for i in range(1, n + 1):\n           if n % i == 0:\n               count += 1\n       return count\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -586,8 +542,7 @@
             "assert frequency_lists([[1, 2, 3, 2], [4, 5, 6, 2], [7, 8, 9, 5]])=={1: 1, 2: 3, 3: 1, 4: 1, 5: 2, 6: 1, 7: 1, 8: 1, 9: 1}",
             "assert frequency_lists([[1,2,3,4],[5,6,7,8],[9,10,11,12]])=={1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 1,10:1,11:1,12:1}",
             "assert frequency_lists([[20,30,40,17],[18,16,14,13],[10,20,30,40]])=={20:2,30:2,40:2,17: 1,18:1, 16: 1,14: 1,13: 1, 10: 1}"
-        ],
-        "completion": "\n   def frequency_lists(list_of_lists):\n       frequency_dict = {}\n       for sublist in list_of_lists:\n           for element in sublist:\n               if element in frequency_dict:\n                   frequency_dict[element] += 1\n               else:\n                   frequency_dict[element] = 1\n       return frequency_dict\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -601,8 +556,7 @@
             "assert math.isclose(multiply_num((8, 2, 3, -1, 7)), -67.2, rel_tol=0.001)",
             "assert math.isclose(multiply_num((-10,-20,-30)), -2000.0, rel_tol=0.001)",
             "assert math.isclose(multiply_num((19,15,18)), 1710.0, rel_tol=0.001)"
-        ],
-        "completion": "\n   def multiply_num(numbers):\n       product = 1\n       for number in numbers:\n           product *= number\n       result = product / len(numbers)\n       return result\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -614,8 +568,7 @@
             "assert decimal_to_binary(8) == '1000'",
             "assert decimal_to_binary(18) == '10010'",
             "assert decimal_to_binary(7) == '111'"
-        ],
-        "completion": "\n   def decimal_to_binary(decimal_number):\n       if decimal_number == 0:\n           return '0'\n       binary_string = ''\n       while decimal_number > 0:\n           remainder = decimal_number % 2\n           binary_string = str(remainder) + binary_string\n           decimal_number = decimal_number // 2\n       return binary_string\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -627,8 +580,7 @@
             "assert next_smallest_palindrome(99)==101",
             "assert next_smallest_palindrome(1221)==1331",
             "assert next_smallest_palindrome(120)==121"
-        ],
-        "completion": "\n   def is_palindrome(num):\n       str_num = str(num)\n       return str_num == str_num[::-1]\n\n   def next_smallest_palindrome(num):\n       while True:\n           num += 1\n           if is_palindrome(num):\n               return num\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -640,8 +592,7 @@
             "assert kth_element([12,3,5,7,19], 2) == 3",
             "assert kth_element([17,24,8,23], 3) == 8",
             "assert kth_element([16,21,25,36,4], 4) == 36"
-        ],
-        "completion": "\n   def kth_element(arr, k):\n       sorted_arr = sorted(arr)\n       return sorted_arr[k-1]\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -653,8 +604,7 @@
             "assert snake_to_camel('python_program')=='PythonProgram'",
             "assert snake_to_camel('python_language')==('PythonLanguage')",
             "assert snake_to_camel('programming_language')==('ProgrammingLanguage')"
-        ],
-        "completion": "\n   def snake_to_camel(snake_str):\n       words = snake_str.split('_')\n       camel_case_str = ''.join(word.capitalize() for word in words)\n       return camel_case_str\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -666,8 +616,7 @@
             "assert eulerian_num(3, 1) == 4",
             "assert eulerian_num(4, 1) == 11",
             "assert eulerian_num(5, 3) == 26"
-        ],
-        "completion": "\ndef eulerian_num(n, m):\n    # Initialize a 2D array to store Eulerian numbers\n    euler = [[0] * (m + 1) for _ in range(n + 1)]\n    \n    # Base cases\n    for i in range(1, n + 1):\n        euler[i][0] = 1\n    \n    # Fill the array using the recursive formula\n    for i in range(2, n + 1):\n        for j in range(1, min(i, m + 1)):\n            euler[i][j] = (i - j) * euler[i - 1][j - 1] + (j + 1) * euler[i - 1][j]\n    \n    return euler[n][m]\n\n# Test cases\nassert eulerian_num(3, 1) == 4\nassert eulerian_num(4, 1) == 11\nassert eulerian_num(5, 3) == 26\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -679,8 +628,7 @@
             "assert sort_sublists(([\"green\", \"orange\"], [\"black\", \"white\"], [\"white\", \"black\", \"orange\"]))==[['green', 'orange'], ['black', 'white'], ['black', 'orange', 'white']]",
             "assert sort_sublists(([\" red \",\"green\" ],[\"blue \",\" black\"],[\" orange\",\"brown\"]))==[[' red ', 'green'], [' black', 'blue '], [' orange', 'brown']]",
             "assert sort_sublists(([\"zilver\",\"gold\"], [\"magnesium\",\"aluminium\"], [\"steel\", \"bronze\"]))==[['gold', 'zilver'],['aluminium', 'magnesium'], ['bronze', 'steel']]"
-        ],
-        "completion": "\n   def sort_sublists(list_of_lists):\n       for i in range(len(list_of_lists)):\n           list_of_lists[i] = sorted(list_of_lists[i])\n       return list_of_lists\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -692,8 +640,7 @@
             "assert count([True,False,True]) == 2",
             "assert count([False,False]) == 0",
             "assert count([True,True,True]) == 3"
-        ],
-        "completion": "\n   def count(booleans):\n       true_count = 0\n       for boolean in booleans:\n           if boolean:\n               true_count += 1\n       return true_count\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -705,8 +652,7 @@
             "assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)",
             "assert add_lists([6, 7, 8], (10, 11)) == (10, 11, 6, 7, 8)",
             "assert add_lists([7, 8, 9], (11, 12)) == (11, 12, 7, 8, 9)"
-        ],
-        "completion": "\n   def add_lists(lst, tpl):\n       # Convert the tuple to a list\n       combined_list = list(tpl)\n       # Append the elements of the list to the new list\n       combined_list.extend(lst)\n       # Convert the new list back to a tuple\n       combined_tuple = tuple(combined_list)\n       # Return the new tuple\n       return combined_tuple\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -718,8 +664,7 @@
             "assert merge_sorted_list([25, 24, 15, 4, 5, 29, 110],[19, 20, 11, 56, 25, 233, 154],[24, 26, 54, 48])==[4, 5, 11, 15, 19, 20, 24, 24, 25, 25, 26, 29, 48, 54, 56, 110, 154, 233]",
             "assert merge_sorted_list([1, 3, 5, 6, 8, 9], [2, 5, 7, 11], [1, 4, 7, 8, 12])==[1, 1, 2, 3, 4, 5, 5, 6, 7, 7, 8, 8, 9, 11, 12]",
             "assert merge_sorted_list([18, 14, 10, 9, 8, 7, 9, 3, 2, 4, 1],[25, 35, 22, 85, 14, 65, 75, 25, 58],[12, 74, 9, 50, 61, 41])==[1, 2, 3, 4, 7, 8, 9, 9, 9, 10, 12, 14, 14, 18, 22, 25, 25, 35, 41, 50, 58, 61, 65, 74, 75, 85]"
-        ],
-        "completion": "\n   def merge_sorted_list(list1, list2, list3):\n       combined_list = list1 + list2 + list3\n       sorted_list = sorted(combined_list)\n       return sorted_list\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -731,8 +676,7 @@
             "assert odd_Equivalent(\"011001\",6) == 3",
             "assert odd_Equivalent(\"11011\",5) == 4",
             "assert odd_Equivalent(\"1010\",4) == 2"
-        ],
-        "completion": "\n   def odd_Equivalent(binary_string, rotations):\n       count = 0\n       for _ in range(rotations):\n           if binary_string[-1] == '1':\n               count += 1\n           binary_string = binary_string[-1] + binary_string[:-1]\n       return count\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -744,8 +688,7 @@
             "assert set(common_in_nested_lists([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]]))==set([18, 12])",
             "assert set(common_in_nested_lists([[12, 5, 23, 25, 45], [7, 11, 5, 23, 28], [1, 5, 8, 18, 23, 16]]))==set([5,23])",
             "assert set(common_in_nested_lists([[2, 3,4, 1], [4, 5], [6,4, 8],[4, 5], [6, 8,4]]))==set([4])"
-        ],
-        "completion": "\n   def common_in_nested_lists(nested_lists):\n       if not nested_lists:\n           return []\n       \n       common_elements = set(nested_lists[0])\n       \n       for lst in nested_lists[1:]:\n           common_elements &= set(lst)\n       \n       return list(common_elements)\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -757,8 +700,7 @@
             "assert check_integer(\"python\")==False",
             "assert check_integer(\"1\")==True",
             "assert check_integer(\"12345\")==True"
-        ],
-        "completion": "\n   def check_integer(s):\n       return s.isdigit()\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -770,8 +712,7 @@
             "assert empty_dit([{},{},{}])==True",
             "assert empty_dit([{1,2},{},{}])==False",
             "assert empty_dit({})==True"
-        ],
-        "completion": "\n   def empty_dit(input):\n       if isinstance(input, dict) and not input:\n           return True\n       if not isinstance(input, list):\n           return False\n       for dictionary in input:\n           if dictionary:\n               return False\n       return True\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -783,8 +724,7 @@
             "assert tuple_to_int((1,2,3))==123",
             "assert tuple_to_int((4,5,6))==456",
             "assert tuple_to_int((5,6,7))==567"
-        ],
-        "completion": "\n   def tuple_to_int(t):\n       concatenated_string = ''.join(map(str, t))\n       result_integer = int(concatenated_string)\n       return result_integer\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -796,8 +736,7 @@
             "assert list_to_float( [(\"3\", \"4\"), (\"1\", \"26.45\"), (\"7.32\", \"8\"), (\"4\", \"8\")] ) == [(3.0, 4.0), (1.0, 26.45), (7.32, 8.0), (4.0, 8.0)]",
             "assert list_to_float( [(\"4\", \"4\"), (\"2\", \"27\"), (\"4.12\", \"9\"), (\"7\", \"11\")] ) == [(4.0, 4.0), (2.0, 27.0), (4.12, 9.0), (7.0, 11.0)]",
             "assert list_to_float( [(\"6\", \"78\"), (\"5\", \"26.45\"), (\"1.33\", \"4\"), (\"82\", \"13\")] ) == [(6.0, 78.0), (5.0, 26.45), (1.33, 4.0), (82.0, 13.0)]"
-        ],
-        "completion": "\n   def list_to_float(list_of_lists):\n       for i, sublist in enumerate(list_of_lists):\n           for j, element in enumerate(sublist):\n               try:\n                   list_of_lists[i][j] = float(element)\n               except ValueError:\n                   pass  # Keep the original element if conversion fails\n       return list_of_lists\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -809,8 +748,7 @@
             "assert string_to_list(\"python programming\")==['python','programming']",
             "assert string_to_list(\"lists tuples strings\")==['lists','tuples','strings']",
             "assert string_to_list(\"write a program\")==['write','a','program']"
-        ],
-        "completion": "\ndef string_to_list(input_string):\n    return input_string.split()\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -822,8 +760,7 @@
             "assert search([1,1,2,2,3]) == 3",
             "assert search([1,1,3,3,4,4,5,5,7,7,8]) == 8",
             "assert search([1,2,2,3,3,4,4]) == 1"
-        ],
-        "completion": "\n   def search(arr):\n       left = 0\n       right = len(arr) - 1\n       \n       while left < right:\n           mid = (left + right) // 2\n           if mid % 2 == 0:\n               if arr[mid] == arr[mid + 1]:\n                   left = mid + 2\n               else:\n                   right = mid\n           else:\n               if arr[mid] == arr[mid - 1]:\n                   left = mid + 1\n               else:\n                   right = mid\n       \n       return arr[left]\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -835,8 +772,7 @@
             "assert max_product_tuple([(2, 7), (2, 6), (1, 8), (4, 9)] )==36",
             "assert max_product_tuple([(10,20), (15,2), (5,10)] )==200",
             "assert max_product_tuple([(11,44), (10,15), (20,5), (12, 9)] )==484"
-        ],
-        "completion": "\n   def max_product_tuple(list_of_tuples):\n       max_product = 0\n       for a, b in list_of_tuples:\n           product = abs(a * b)\n           if product > max_product:\n               max_product = product\n       return max_product\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -848,8 +784,7 @@
             "assert amicable_numbers_sum(999)==504",
             "assert amicable_numbers_sum(9999)==31626",
             "assert amicable_numbers_sum(99)==0"
-        ],
-        "completion": "\n   def sum_of_divisors(n):\n       sum_divs = 1\n       for i in range(2, int(n**0.5) + 1):\n           if n % i == 0:\n               sum_divs += i\n               if i != n // i:\n                   sum_divs += n // i\n       return sum_divs\n\n   def amicable_numbers_sum(limit):\n       total_sum = 0\n       for number in range(2, limit + 1):\n           sum1 = sum_of_divisors(number)\n           sum2 = sum_of_divisors(sum1)\n           if sum2 == number and number != sum1:\n               total_sum += number\n       return total_sum\n\n   # Test cases\n   assert amicable_numbers_sum(999) == 504\n   assert amicable_numbers_sum(9999) == 31626\n   assert amicable_numbers_sum(99) == 0\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -863,8 +798,7 @@
             "assert math.isclose(angle_complex(0,1j), 1.5707963267948966, rel_tol=0.001)",
             "assert math.isclose(angle_complex(2,1j), 0.4636476090008061, rel_tol=0.001)",
             "assert math.isclose(angle_complex(0,2j), 1.5707963267948966, rel_tol=0.001)"
-        ],
-        "completion": "\nimport math\n\ndef angle_complex(x, y):\n    angle = math.atan2(y, x)\n    return angle\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -876,8 +810,7 @@
             "assert find_length(\"11000010001\") == 6",
             "assert find_length(\"10111\") == 1",
             "assert find_length(\"11011101100101\") == 2"
-        ],
-        "completion": "\ndef find_length(binary_str):\n    # Step 1: Convert the binary string to an array of integers\n    arr = [1 if char == '0' else -1 for char in binary_str]\n    \n    # Step 2: Apply Kadane's algorithm\n    max_so_far = 0\n    max_ending_here = 0\n    \n    for num in arr:\n        max_ending_here = max(max_ending_here + num, 0)\n        max_so_far = max(max_so_far, max_ending_here)\n    \n    return max_so_far\n\n# Test cases\nassert find_length(\"11000010001\") == 6\nassert find_length(\"10111\") == 1\nassert find_length(\"11011101100101\") == 2\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -889,8 +822,7 @@
             "assert sum(10,15) == 6",
             "assert sum(100,150) == 93",
             "assert sum(4,6) == 3"
-        ],
-        "completion": "\n   def sum_common_divisors(a, b):\n       divisors_a = set()\n       divisors_b = set()\n       \n       for i in range(1, a + 1):\n           if a % i == 0:\n               divisors_a.add(i)\n       \n       for i in range(1, b + 1):\n           if b % i == 0:\n               divisors_b.add(i)\n       \n       common_divisors = divisors_a.intersection(divisors_b)\n       return sum(common_divisors)\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -902,8 +834,7 @@
             "assert multiply_int(10,20)==200",
             "assert multiply_int(5,10)==50",
             "assert multiply_int(4,8)==32"
-        ],
-        "completion": "\ndef multiply_int(a, b):\n    return a * b\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -915,8 +846,7 @@
             "assert long_words(3,\"python is a programming language\")==['python','programming','language']",
             "assert long_words(2,\"writing a program\")==['writing','program']",
             "assert long_words(5,\"sorting list\")==['sorting']"
-        ],
-        "completion": "\n   def long_words(n, sentence):\n       words = sentence.split()\n       result = [word for word in words if len(word) > n]\n       return result\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -928,8 +858,7 @@
             "assert magic_square_test([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]])==True",
             "assert magic_square_test([[2, 7, 6], [9, 5, 1], [4, 3, 8]])==True",
             "assert magic_square_test([[2, 7, 6], [9, 5, 1], [4, 3, 7]])==False"
-        ],
-        "completion": "\n   def magic_square_test(matrix):\n       n = len(matrix)\n       row_sums = []\n       col_sums = [0] * n\n       main_diag_sum = 0\n       sec_diag_sum = 0\n       \n       for i in range(n):\n           row_sum = 0\n           for j in range(n):\n               row_sum += matrix[i][j]\n               col_sums[j] += matrix[i][j]\n           row_sums.append(row_sum)\n           \n           main_diag_sum += matrix[i][i]\n           sec_diag_sum += matrix[i][n-1-i]\n       \n       all_sums = row_sums + col_sums + [main_diag_sum] + [sec_diag_sum]\n       return all(sum == all_sums[0] for sum in all_sums)\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -941,8 +870,7 @@
             "assert max_occurrences([2,3,8,4,7,9,8,2,6,5,1,6,1,2,3,2,4,6,9,1,2])==2",
             "assert max_occurrences([2,3,8,4,7,9,8,7,9,15,14,10,12,13,16,18])==8",
             "assert max_occurrences([10,20,20,30,40,90,80,50,30,20,50,10])==20"
-        ],
-        "completion": "\n   def max_occurrences(lst):\n       freq_dict = {}\n       for item in lst:\n           if item in freq_dict:\n               freq_dict[item] += 1\n           else:\n               freq_dict[item] = 1\n       max_item = max(freq_dict, key=freq_dict.get)\n       return max_item\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -954,8 +882,7 @@
             "assert reverse_vowels(\"Python\") == \"Python\"",
             "assert reverse_vowels(\"USA\") == \"ASU\"",
             "assert reverse_vowels(\"ab\") == \"ab\""
-        ],
-        "completion": "\ndef reverse_vowels(s):\n    vowels = 'aeiouAEIOU'\n    # Step 1: Identify vowels and their positions\n    vowel_positions = [(char, i) for i, char in enumerate(s) if char in vowels]\n    \n    # Step 2: Reverse the list of vowels\n    reversed_vowels = vowel_positions[::-1]\n    \n    # Step 3: Reconstruct the string with reversed vowels\n    result = list(s)\n    for (char, i), (rev_char, _) in zip(vowel_positions, reversed_vowels):\n        result[i] = rev_char\n    \n    return ''.join(result)\n\n# Test cases\nassert reverse_vowels(\"Python\") == \"Python\"\nassert reverse_vowels(\"USA\") == \"ASU\"\nassert reverse_vowels(\"ab\") == \"ab\"\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -967,8 +894,7 @@
             "assert tup_string(('e', 'x', 'e', 'r', 'c', 'i', 's', 'e', 's'))==(\"exercises\")",
             "assert tup_string(('p','y','t','h','o','n'))==(\"python\")",
             "assert tup_string(('p','r','o','g','r','a','m'))==(\"program\")"
-        ],
-        "completion": "\ndef tup_string(t):\n    result = \"\"\n    for char in t:\n        result += char\n    return result\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -980,8 +906,7 @@
             "assert sum_negativenum([2, 4, -6, -9, 11, -12, 14, -5, 17])==-32",
             "assert sum_negativenum([10,15,-14,13,-18,12,-20])==-52",
             "assert sum_negativenum([19, -65, 57, 39, 152,-639, 121, 44, 90, -190])==-894"
-        ],
-        "completion": "\n   def sum_negativenum(numbers):\n       total = 0\n       for number in numbers:\n           if number < 0:\n               total += number\n       return total\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -993,8 +918,7 @@
             "assert hexagonal_num(10) == 190",
             "assert hexagonal_num(5) == 45",
             "assert hexagonal_num(7) == 91"
-        ],
-        "completion": "\ndef hexagonal_num(n):\n    return n * (2 * n - 1)\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -1008,8 +932,7 @@
             "assert math.isclose(zero_count([0, 1, 2, -1, -5, 6, 0, -3, -2, 3, 4, 6, 8]), 0.181818, rel_tol=0.001)",
             "assert math.isclose(zero_count([2, 1, 2, -1, -5, 6, 4, -3, -2, 3, 4, 6, 8]), 0.00, rel_tol=0.001)",
             "assert math.isclose(zero_count([2, 4, -6, -9, 11, -12, 14, -5, 17]), 0.00, rel_tol=0.001)"
-        ],
-        "completion": "\n   import math\n\n   def zero_count(arr):\n       count_zeroes = 0\n       count_non_zeroes = 0\n       \n       for element in arr:\n           if element == 0:\n               count_zeroes += 1\n           else:\n               count_non_zeroes += 1\n       \n       if count_non_zeroes == 0:\n           return 0\n       \n       ratio = count_zeroes / count_non_zeroes\n       return ratio\n\n   # Test cases\n   assert math.isclose(zero_count([0, 1, 2, -1, -5, 6, 0, -3, -2, 3, 4, 6, 8]), 0.181818, rel_tol=0.001)\n   assert math.isclose(zero_count([2, 1, 2, -1, -5, 6, 4, -3, -2, 3, 4, 6, 8]), 0.00, rel_tol=0.001)\n   assert math.isclose(zero_count([2, 4, -6, -9, 11, -12, 14, -5, 17]), 0.00, rel_tol=0.001)\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -1021,8 +944,7 @@
             "assert is_Sum_Of_Powers_Of_Two(10) == True",
             "assert is_Sum_Of_Powers_Of_Two(7) == False",
             "assert is_Sum_Of_Powers_Of_Two(14) == True"
-        ],
-        "completion": "\n   def is_Sum_Of_Powers_Of_Two(number):\n       binary_representation = bin(number)[2:]  # Convert to binary and remove the '0b' prefix\n       for i in range(len(binary_representation) - 1):\n           if binary_representation[i] == '1' and binary_representation[i + 1] == '1':\n               return False\n       return True\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -1036,8 +958,7 @@
             "assert math.isclose(circle_circumference(10), 62.830000000000005, rel_tol=0.001)",
             "assert math.isclose(circle_circumference(5), 31.415000000000003, rel_tol=0.001)",
             "assert math.isclose(circle_circumference(4), 25.132, rel_tol=0.001)"
-        ],
-        "completion": "\nimport math\n\ndef circle_circumference(r):\n    circumference = 2 * math.pi * r\n    return circumference\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -1049,8 +970,7 @@
             "assert set(extract_singly([(3, 4, 5), (4, 5, 7), (1, 4)])) == set([3, 4, 5, 7, 1])",
             "assert set(extract_singly([(1, 2, 3), (4, 2, 3), (7, 8)])) == set([1, 2, 3, 4, 7, 8])",
             "assert set(extract_singly([(7, 8, 9), (10, 11, 12), (10, 11)])) == set([7, 8, 9, 10, 11, 12])"
-        ],
-        "completion": "\ndef extract_singly(list_of_tuples):\n    unique_numbers = set()\n    for tup in list_of_tuples:\n        for num in tup:\n            unique_numbers.add(num)\n    return list(unique_numbers)\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -1062,8 +982,7 @@
             "assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]",
             "assert pancake_sort([98, 12, 54, 36, 85]) == [12, 36, 54, 85, 98]",
             "assert pancake_sort([41, 42, 32, 12, 23]) == [12, 23, 32, 41, 42]"
-        ],
-        "completion": "\ndef pancake_sort(arr):\n    def flip(sublist, k):\n        i = 0\n        while i < k / 2:\n            sublist[i], sublist[k - i - 1] = sublist[k - i - 1], sublist[i]\n            i += 1\n    \n    n = len(arr)\n    while n > 1:\n        # Find the index of the maximum element in arr[:n]\n        max_idx = arr.index(max(arr[:n]))\n        \n        # If the maximum element is not already in its correct position\n        if max_idx != n - 1:\n            # Flip the array to bring the maximum element to the front\n            if max_idx != 0:\n                flip(arr, max_idx + 1)\n            # Flip the array to move the maximum element to its correct position\n            flip(arr, n)\n        \n        n -= 1\n    \n    return arr\n"
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -1075,8 +994,7 @@
             "assert count_samepair([1,2,3,4,5,6,7,8],[2,2,3,1,2,6,7,9],[2,1,3,1,2,6,7,9])==3",
             "assert count_samepair([1,2,3,4,5,6,7,8],[2,2,3,1,2,6,7,8],[2,1,3,1,2,6,7,8])==4",
             "assert count_samepair([1,2,3,4,2,6,7,8],[2,2,3,1,2,6,7,8],[2,1,3,1,2,6,7,8])==5"
-        ],
-        "completion": "\n   def count_samepair(list1, list2, list3):\n       count = 0\n       for i in range(len(list1)):  # Assuming all lists are of the same length\n           if list1[i] == list2[i] and list2[i] == list3[i]:\n               count += 1\n       return count\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -1088,8 +1006,7 @@
             "assert find_lists(([1, 2, 3, 4], [5, 6, 7, 8])) == 2",
             "assert find_lists(([1, 2], [3, 4], [5, 6]))  == 3",
             "assert find_lists(([9, 8, 7, 6, 5, 4, 3, 2, 1])) == 1"
-        ],
-        "completion": "\n   def find_lists(input_tuple):\n       counter = 0\n       for element in input_tuple:\n           if isinstance(element, list):\n               counter += 1\n       return counter\n   "
+        ]
     },
     {
         "source_file": "Mike's Copy of Benchmark Questions Verification V2.ipynb",
@@ -1101,8 +1018,7 @@
             "assert max_Abs_Diff((2,1,5,3)) == 4",
             "assert max_Abs_Diff((9,3,2,5,1)) == 8",
             "assert max_Abs_Diff((3,2,1)) == 2"
-        ],
-        "completion": "\n   def max_Abs_Diff(arr):\n       min_element = min(arr)\n       max_element = max(arr)\n       return max_element - min_element\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1114,8 +1030,7 @@
             "assert find_solution(2, 3, 7) == (2, 1)",
             "assert find_solution(4, 2, 7) == None",
             "assert find_solution(1, 13, 17) == (4, 1)"
-        ],
-        "completion": "\ndef extended_gcd(a, b):\n    if a == 0:\n        return (b, 0, 1)\n    else:\n        g, x, y = extended_gcd(b % a, a)\n        return (g, y - (b // a) * x, x)\n\ndef find_solution(a, b, n):\n    g, x, y = extended_gcd(a, b)\n    if n % g != 0:\n        return None\n    else:\n        x *= n // g\n        y *= n // g\n        return (x, y)\n\n# Test cases\nassert find_solution(2, 3, 7) == (2, 1)\nassert find_solution(4, 2, 7) == None\nassert find_solution(1, 13, 17) == (4, 1)\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1127,8 +1042,7 @@
             "assert remove_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [2, 4, 6, 8]) == [1, 3, 5, 7, 9, 10]",
             "assert remove_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 3, 5, 7]) == [2, 4, 6, 8, 9, 10]",
             "assert remove_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [5, 7]) == [1, 2, 3, 4, 6, 8, 9, 10]"
-        ],
-        "completion": "\n   def remove_elements(list1, list2):\n       result = []\n       for element in list1:\n           if element not in list2:\n               result.append(element)\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1140,8 +1054,7 @@
             "assert sum_series(6) == 12",
             "assert sum_series(10) == 30",
             "assert sum_series(9) == 25"
-        ],
-        "completion": "\n   def sum_series(n):\n       sum = 0\n       for i in range(n // 2 + 1):\n           term = n - 2 * i\n           if term <= 0:\n               break\n           sum += term\n       return sum\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1155,8 +1068,7 @@
             "assert math.isclose(area_polygon(4, 20), 400., rel_tol=0.001)",
             "assert math.isclose(area_polygon(10, 15), 1731.197, rel_tol=0.001)",
             "assert math.isclose(area_polygon(9, 7), 302.909, rel_tol=0.001)"
-        ],
-        "completion": "\n   import math\n\n   def area_polygon(n, s):\n       area = (n * s**2) / (4 * math.tan(math.pi / n))\n       return area\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1168,8 +1080,7 @@
             "assert are_equivalent(36, 57) == False",
             "assert are_equivalent(2, 4) == False",
             "assert are_equivalent(23, 47) == True"
-        ],
-        "completion": "\ndef sum_of_divisors(num):\n    sum_divisors = 0\n    for i in range(1, num + 1):\n        if num % i == 0:\n            sum_divisors += i\n    return sum_divisors\n\ndef are_equivalent(num1, num2):\n    sum1 = sum_of_divisors(num1)\n    sum2 = sum_of_divisors(num2)\n    return sum1 == sum2\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1181,8 +1092,7 @@
             "assert count_char_position(\"xbcefg\") == 2",
             "assert count_char_position(\"ABcED\") == 3",
             "assert count_char_position(\"AbgdeF\") == 5"
-        ],
-        "completion": "\n   def count_char_position(s):\n       count = 0\n       s = s.lower()\n       for i in range(len(s)):\n           if (i + 1) == (ord(s[i]) - ord('a') + 1):\n               count += 1\n       return count\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1194,8 +1104,7 @@
             "assert find_even_pair([5, 4, 7, 2, 1]) == 4",
             "assert find_even_pair([7, 2, 8, 1, 0, 5, 11]) == 9",
             "assert find_even_pair([1, 2, 3]) == 1"
-        ],
-        "completion": "\n   def find_even_pair(nums):\n       even_count = 0\n       odd_count = 0\n       for num in nums:\n           if num % 2 == 0:\n               even_count += 1\n           else:\n               odd_count += 1\n       even_pairs = (even_count * (even_count - 1)) // 2\n       odd_pairs = (odd_count * (odd_count - 1)) // 2\n       return even_pairs + odd_pairs\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1207,8 +1116,7 @@
             "assert next_power_of_2(0) == 1",
             "assert next_power_of_2(5) == 8",
             "assert next_power_of_2(17) == 32"
-        ],
-        "completion": "\ndef next_power_of_2(n):\n    power = 1\n    while power < n:\n        power *= 2\n    return power\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1220,8 +1128,7 @@
             "assert frequency([1,2,3], 4) == 0",
             "assert frequency([1,2,2,3,3,3,4], 3) == 3",
             "assert frequency([0,1,2,3,1,2], 1) == 2"
-        ],
-        "completion": "\n   def frequency(lst, num):\n       counter = 0\n       for element in lst:\n           if element == num:\n               counter += 1\n       return counter\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1233,8 +1140,7 @@
             "assert sum_range_list([2,1,5,6,8,3,4,9,10,11,8,12], 8, 10) == 29",
             "assert sum_range_list([2,1,5,6,8,3,4,9,10,11,8,12], 5, 7) == 16",
             "assert sum_range_list([2,1,5,6,8,3,4,9,10,11,8,12], 7, 10) == 38"
-        ],
-        "completion": "\n   def sum_range_list(lst, start_index, end_index):\n       sum = 0\n       for i in range(start_index, end_index + 1):\n           sum += lst[i]\n       return sum\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1246,8 +1152,7 @@
             "assert perimeter_pentagon(5) == 25",
             "assert perimeter_pentagon(10) == 50",
             "assert perimeter_pentagon(15) == 75"
-        ],
-        "completion": "\ndef perimeter_pentagon(side_length):\n    number_of_sides = 5\n    perimeter = number_of_sides * side_length\n    return perimeter\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1261,8 +1166,7 @@
             "assert count_occurance(\"makestdsostdworthit\") == 2",
             "assert count_occurance(\"stds\") == 1",
             "assert count_occurance(\"\") == 0"
-        ],
-        "completion": "\n   def count_occurance(input_string):\n       count = 0\n       n = len(input_string)\n       for i in range(n - 2):\n           if input_string[i:i+3] == \"std\":\n               count += 1\n       return count\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1274,8 +1178,7 @@
             "assert check_type((5, 6, 7, 3, 5, 6) ) == True",
             "assert check_type((1, 2, \"4\") ) == False",
             "assert check_type((3, 2, 1, 4, 5) ) == True"
-        ],
-        "completion": "\ndef check_type(tup):\n    # Get the type of the first element\n    first_type = type(tup[0])\n    \n    # Iterate through each element in the tuple\n    for element in tup:\n        # Check if the type of the current element matches the type of the first element\n        if type(element) != first_type:\n            return False\n    \n    # If all elements have the same type, return True\n    return True\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1288,8 +1191,7 @@
             "assert is_majority([1, 1, 2, 4, 4, 4, 6, 6], 8, 4) == False",
             "assert is_majority([1, 1, 1, 2, 2], 5, 1) == True",
             "assert is_majority([1, 1, 2, 2], 5, 1) == False"
-        ],
-        "completion": "\n   def is_majority(arr, n, x):\n       def find_first_occurrence(arr, n, x):\n           low = 0\n           high = n - 1\n           result = -1\n           while low <= high:\n               mid = (low + high) // 2\n               if arr[mid] == x:\n                   result = mid\n                   high = mid - 1\n               elif arr[mid] > x:\n                   high = mid - 1\n               else:\n                   low = mid + 1\n           return result\n       \n       first_index = find_first_occurrence(arr, n, x)\n       if first_index == -1:\n           return False\n       \n       last_index = first_index + n // 2\n       if last_index < n and arr[last_index] == x:\n           return True\n       else:\n           return False\n\n   # Test cases\n   assert is_majority([1, 2, 3, 3, 3, 3, 10], 7, 3) == True\n   assert is_majority([1, 1, 2, 4, 4, 4, 6, 6], 8, 4) == False\n   assert is_majority([1, 1, 1, 2, 2], 5, 1) == True\n   assert is_majority([1, 1, 2, 2], 5, 1) == False\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1301,8 +1203,7 @@
             "assert count_Set_Bits(2) == 1",
             "assert count_Set_Bits(4) == 1",
             "assert count_Set_Bits(6) == 2"
-        ],
-        "completion": "\ndef count_Set_Bits(n):\n    # Convert the number to binary and remove the '0b' prefix\n    binary_representation = bin(n)[2:]\n    # Count the number of '1's in the binary representation\n    count_of_ones = binary_representation.count('1')\n    # Return the count of '1's\n    return count_of_ones\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1315,8 +1216,7 @@
             "assert odd_values_string('python') == 'pto'",
             "assert odd_values_string('data') == 'dt'",
             "assert odd_values_string('lambs') == 'lms'"
-        ],
-        "completion": "\n   def odd_values_string(input_string):\n       result = \"\"\n       for index in range(len(input_string)):\n           if index % 2 == 0:\n               result += input_string[index]\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1328,8 +1228,7 @@
             "assert min_of_three(10,20,0)==0",
             "assert min_of_three(19,15,18)==15",
             "assert min_of_three(-10,-20,-30)==-30"
-        ],
-        "completion": "\n   def min_of_three(a, b, c):\n       if a < b and a < c:\n           return a\n       elif b < a and b < c:\n           return b\n       else:\n           return c\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1341,8 +1240,7 @@
             "assert all_Bits_Set_In_The_Given_Range(4,1,2) == True",
             "assert all_Bits_Set_In_The_Given_Range(17,2,4) == True",
             "assert all_Bits_Set_In_The_Given_Range(39,4,6) == False"
-        ],
-        "completion": "\n   def all_Bits_Set_In_The_Given_Range(n, l, r):\n       # Convert the number to binary and remove the '0b' prefix\n       binary_representation = bin(n)[2:]\n       \n       # Reverse the binary representation to make indexing easier\n       reversed_binary = binary_representation[::-1]\n       \n       # Check the bits in the range [l, r]\n       for i in range(l, r + 1):\n           if i > len(reversed_binary) - 1:\n               continue\n           if reversed_binary[i] == '1':\n               return False\n       \n       return True\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1354,8 +1252,7 @@
             "assert re_arrange_array([-1, 2, -3, 4, 5, 6, -7, 8, 9], 9) == [-1, -3, -7, 4, 5, 6, 2, 8, 9]",
             "assert re_arrange_array([12, -14, -26, 13, 15], 5) == [-14, -26, 12, 13, 15]",
             "assert re_arrange_array([10, 24, 36, -42, -39, -78, 85], 7) == [-42, -39, -78, 10, 24, 36, 85]"
-        ],
-        "completion": "\n   def re_arrange_array(arr, n):\n       negatives = [x for x in arr[:n] if x < 0]\n       positives = [x for x in arr[:n] if x >= 0]\n       rearranged = negatives + positives\n       return rearranged + arr[n:]\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1367,8 +1264,7 @@
             "assert replace_blank(\"hello people\",'@')==(\"hello@people\")",
             "assert replace_blank(\"python program language\",'$')==(\"python$program$language\")",
             "assert replace_blank(\"blank space\",\"-\")==(\"blank-space\")"
-        ],
-        "completion": "\n   def replace_blank(input_string, char):\n       return input_string.replace(' ', char)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1380,8 +1276,7 @@
             "assert set(larg_nnum([10, 20, 50, 70, 90, 20, 50, 40, 60, 80, 100],2))==set([100,90])",
             "assert set(larg_nnum([10, 20, 50, 70, 90, 20, 50, 40, 60, 80, 100],5))==set([100,90,80,70,60])",
             "assert set(larg_nnum([10, 20, 50, 70, 90, 20, 50, 40, 60, 80, 100],3))==set([100,90,80])"
-        ],
-        "completion": "\n   def larg_nnum(lst, n):\n       sorted_lst = sorted(lst, reverse=True)\n       result = sorted_lst[:n]\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1395,8 +1290,7 @@
             "assert math.isclose(lateralsuface_cylinder(10,5), 314.15000000000003, rel_tol=0.001)",
             "assert math.isclose(lateralsuface_cylinder(4,5), 125.66000000000001, rel_tol=0.001)",
             "assert math.isclose(lateralsuface_cylinder(4,10), 251.32000000000002, rel_tol=0.001)"
-        ],
-        "completion": "\n   import math\n\n   def lateralsurface_cylinder(radius, height):\n       lateral_surface_area = 2 * math.pi * radius * height\n       return lateral_surface_area\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1408,8 +1302,7 @@
             "assert volume_cube(3)==27",
             "assert volume_cube(2)==8",
             "assert volume_cube(5)==125"
-        ],
-        "completion": "\n   def volume_cube(side):\n       volume = side ** 3\n       return volume\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1421,8 +1314,7 @@
             "assert even_bit_set_number(10) == 10",
             "assert even_bit_set_number(20) == 30",
             "assert even_bit_set_number(30) == 30"
-        ],
-        "completion": "\n   def even_bit_set_number(n):\n       mask = 0\n       position = 0\n       while (1 << position) <= n:\n           if position % 2 == 0:\n               mask = mask | (1 << position)\n           position += 1\n       return n | mask\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1434,8 +1326,7 @@
             "assert check_occurences([(3, 1), (1, 3), (2, 5), (5, 2), (6, 3)] ) == {(1, 3): 2, (2, 5): 2, (3, 6): 1}",
             "assert check_occurences([(4, 2), (2, 4), (3, 6), (6, 3), (7, 4)] ) == {(2, 4): 2, (3, 6): 2, (4, 7): 1}",
             "assert check_occurences([(13, 2), (11, 23), (12, 25), (25, 12), (16, 23)] ) == {(2, 13): 1, (11, 23): 1, (12, 25): 2, (16, 23): 1}"
-        ],
-        "completion": "\n   def check_occurences(list_of_tuples):\n       result_dict = {}\n       for t in list_of_tuples:\n           sorted_tuple = tuple(sorted(t))\n           if sorted_tuple in result_dict:\n               result_dict[sorted_tuple] += 1\n           else:\n               result_dict[sorted_tuple] = 1\n       return result_dict\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1447,8 +1338,7 @@
             "assert number_of_substrings(\"abc\") == 6",
             "assert number_of_substrings(\"abcd\") == 10",
             "assert number_of_substrings(\"abcde\") == 15"
-        ],
-        "completion": "\n   def number_of_substrings(s):\n       n = len(s)\n       return n * (n + 1) // 2\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1460,8 +1350,7 @@
             "assert get_total_number_of_sequences(10, 4) == 4",
             "assert get_total_number_of_sequences(5, 2) == 6",
             "assert get_total_number_of_sequences(16, 3) == 84"
-        ],
-        "completion": "\ndef get_total_number_of_sequences(m, n):\n    # Initialize the DP table\n    dp = [[0] * (m + 1) for _ in range(n + 1)]\n    \n    # Base case: sequences of length 1\n    for j in range(1, m + 1):\n        dp[1][j] = 1\n    \n    # Fill the DP table\n    for i in range(2, n + 1):\n        for j in range(1, m + 1):\n            for k in range(1, j // 2 + 1):\n                dp[i][j] += dp[i - 1][k]\n    \n    # Sum up the results for sequences of length n\n    result = 0\n    for j in range(1, m + 1):\n        result += dp[n][j]\n    \n    return result\n\n# Test cases\nassert get_total_number_of_sequences(10, 4) == 4\nassert get_total_number_of_sequences(5, 2) == 6\nassert get_total_number_of_sequences(16, 3) == 84\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1473,8 +1362,7 @@
             "assert replace_list([1, 3, 5, 7, 9, 10],[2, 4, 6, 8])==[1, 3, 5, 7, 9, 2, 4, 6, 8]",
             "assert replace_list([1,2,3,4,5],[5,6,7,8])==[1,2,3,4,5,6,7,8]",
             "assert replace_list([\"red\",\"blue\",\"green\"],[\"yellow\"])==[\"red\",\"blue\",\"yellow\"]"
-        ],
-        "completion": "\n   def replace_list(list1, list2):\n       # Remove the last element from list1\n       list1.pop()\n       # Append all elements of list2 to list1\n       list1.extend(list2)\n       return list1\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1486,8 +1374,7 @@
             "assert count_charac(\"python programming\")==18",
             "assert count_charac(\"language\")==8",
             "assert count_charac(\"words\")==5"
-        ],
-        "completion": "\n   def count_charac(input_string):\n       return len(input_string)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1499,8 +1386,7 @@
             "assert next_Perfect_Square(35) == 36",
             "assert next_Perfect_Square(6) == 9",
             "assert next_Perfect_Square(9) == 16"
-        ],
-        "completion": "\n   import math\n\n   def next_Perfect_Square(num):\n       sqrt_num = math.sqrt(num)\n       next_integer = math.ceil(sqrt_num)\n       next_perfect_square = next_integer * next_integer\n       return next_perfect_square\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1512,8 +1398,7 @@
             "assert max_sum([1, 15, 51, 45, 33, 100, 12, 18, 9]) == 194",
             "assert max_sum([80, 60, 30, 40, 20, 10]) == 210",
             "assert max_sum([2, 3 ,14, 16, 21, 23, 29, 30]) == 138"
-        ],
-        "completion": "\n   def max_sum(arr):\n       n = len(arr)\n       max_inc_sum = arr.copy()\n       max_dec_sum = arr.copy()\n       \n       # Calculate max increasing subsequence sum ending at each element\n       for i in range(1, n):\n           for j in range(i):\n               if arr[i] > arr[j] and max_inc_sum[i] < max_inc_sum[j] + arr[i]:\n                   max_inc_sum[i] = max_inc_sum[j] + arr[i]\n       \n       # Calculate max decreasing subsequence sum starting at each element\n       for i in range(n-2, -1, -1):\n           for j in range(n-1, i, -1):\n               if arr[i] > arr[j] and max_dec_sum[i] < max_dec_sum[j] + arr[i]:\n                   max_dec_sum[i] = max_dec_sum[j] + arr[i]\n       \n       # Calculate max bitonic subsequence sum\n       max_bitonic_sum = 0\n       for i in range(n):\n           if max_bitonic_sum < max_inc_sum[i] + max_dec_sum[i] - arr[i]:\n               max_bitonic_sum = max_inc_sum[i] + max_dec_sum[i] - arr[i]\n       \n       return max_bitonic_sum\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1527,8 +1412,7 @@
             "assert math.isclose(babylonian_squareroot(10), 3.162277660168379, rel_tol=0.001)",
             "assert math.isclose(babylonian_squareroot(2), 1.414213562373095, rel_tol=0.001)",
             "assert math.isclose(babylonian_squareroot(9), 3.0, rel_tol=0.001)"
-        ],
-        "completion": "\n   def babylonian_squareroot(number):\n       if number == 0 or number == 1:\n           return number\n       \n       initial_guess = number / 2\n       tolerance = 0.0001\n       \n       while True:\n           new_guess = (initial_guess + number / initial_guess) / 2\n           if abs(initial_guess - new_guess) < tolerance:\n               break\n           initial_guess = new_guess\n       \n       return initial_guess\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1540,8 +1424,7 @@
             "assert lps(\"TENS FOR TENS\") == 5",
             "assert lps(\"CARDIO FOR CARDS\") == 7",
             "assert lps(\"PART OF THE JOURNEY IS PART\") == 9"
-        ],
-        "completion": "\n   def lps(s):\n       n = len(s)\n       dp = [[0] * n for _ in range(n)]\n       \n       for i in range(n):\n           dp[i][i] = 1\n       \n       for cl in range(2, n+1):\n           for i in range(n-cl+1):\n               j = i + cl - 1\n               if s[i] == s[j] and cl == 2:\n                   dp[i][j] = 2\n               elif s[i] == s[j]:\n                   dp[i][j] = dp[i+1][j-1] + 2\n               else:\n                   dp[i][j] = max(dp[i+1][j], dp[i][j-1])\n       \n       return dp[0][n-1]\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1555,8 +1438,7 @@
             "assert math.isclose(harmonic_sum(7), 2.5928571428571425, rel_tol=0.001)",
             "assert math.isclose(harmonic_sum(4), 2.083333333333333, rel_tol=0.001)",
             "assert math.isclose(harmonic_sum(19), 3.547739657143682, rel_tol=0.001)"
-        ],
-        "completion": "\n   def harmonic_sum(n):\n       sum = 0.0\n       for i in range(1, n):\n           sum += 1 / i\n       return sum\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1568,8 +1450,7 @@
             "assert intersection_array([1, 2, 3, 5, 7, 8, 9, 10],[1, 2, 4, 8, 9])==[1, 2, 8, 9]",
             "assert intersection_array([1, 2, 3, 5, 7, 8, 9, 10],[3,5,7,9])==[3,5,7,9]",
             "assert intersection_array([1, 2, 3, 5, 7, 8, 9, 10],[10,20,30,40])==[10]"
-        ],
-        "completion": "\n   def intersection_array(arr1, arr2):\n       set1 = set(arr1)\n       set2 = set(arr2)\n       result_set = set1.intersection(set2)\n       result_list = list(result_set)\n       return result_list\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1581,8 +1462,7 @@
             "assert count_X((10, 8, 5, 2, 10, 15, 10, 8, 5, 8, 8, 2),4) == 0",
             "assert count_X((10, 8, 5, 2, 10, 15, 10, 8, 5, 8, 8, 2),10) == 3",
             "assert count_X((10, 8, 5, 2, 10, 15, 10, 8, 5, 8, 8, 2),8) == 4"
-        ],
-        "completion": "\n   def count_X(tup, x):\n       count = 0\n       for element in tup:\n           if element == x:\n               count += 1\n       return count\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1594,8 +1474,7 @@
             "assert insert_element(['Red', 'Green', 'Black'] ,'c')==['c', 'Red', 'c', 'Green', 'c', 'Black']",
             "assert insert_element(['python', 'java'] ,'program')==['program', 'python', 'program', 'java']",
             "assert insert_element(['happy', 'sad'] ,'laugh')==['laugh', 'happy', 'laugh', 'sad']"
-        ],
-        "completion": "\n   def insert_element(lst, elem):\n       result = []\n       for item in lst:\n           result.append(elem)\n           result.append(item)\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1607,8 +1486,7 @@
             "assert convert(1) == (1.0, 0.0)",
             "assert convert(4) == (4.0,0.0)",
             "assert convert(5) == (5.0,0.0)"
-        ],
-        "completion": "\n   import cmath\n\n   def convert(number):\n       # Convert the number to complex form\n       complex_number = complex(number, 0)\n       # Use cmath.polar to get polar coordinates\n       polar_coordinates = cmath.polar(complex_number)\n       return polar_coordinates\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1620,8 +1498,7 @@
             "assert count_integer([1,2,'abc',1.2]) == 2",
             "assert count_integer([1,2,3]) == 3",
             "assert count_integer([1,1.2,4,5.1]) == 2"
-        ],
-        "completion": "\n   def count_integer(lst):\n       counter = 0\n       for element in lst:\n           if isinstance(element, int):\n               counter += 1\n       return counter\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1633,8 +1510,7 @@
             "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],1)==[('Red',), ('Green',), ('Blue',)]",
             "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],2)==[('Red', 'Red'), ('Red', 'Green'), ('Red', 'Blue'), ('Green', 'Green'), ('Green', 'Blue'), ('Blue', 'Blue')]",
             "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],3)==[('Red', 'Red', 'Red'), ('Red', 'Red', 'Green'), ('Red', 'Red', 'Blue'), ('Red', 'Green', 'Green'), ('Red', 'Green', 'Blue'), ('Red', 'Blue', 'Blue'), ('Green', 'Green', 'Green'), ('Green', 'Green', 'Blue'), ('Green', 'Blue', 'Blue'), ('Blue', 'Blue', 'Blue')]"
-        ],
-        "completion": "\nfrom itertools import combinations_with_replacement\n\ndef combinations_colors(colors, n):\n    # Generate all combinations with repetition of length n\n    comb = combinations_with_replacement(colors, n)\n    # Convert each combination to a tuple and return the list of tuples\n    return [tuple(c) for c in comb]\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1646,8 +1522,7 @@
             "assert count_Primes_nums(5) == 2",
             "assert count_Primes_nums(10) == 4",
             "assert count_Primes_nums(100) == 25"
-        ],
-        "completion": "\n   def count_Primes_nums(n):\n       def is_prime(num):\n           if num < 2:\n               return False\n           for i in range(2, int(num**0.5) + 1):\n               if num % i == 0:\n                   return False\n           return True\n       \n       count = 0\n       for i in range(2, n):\n           if is_prime(i):\n               count += 1\n       return count\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1659,8 +1534,7 @@
             "assert swap_numbers(10,20)==(20,10)",
             "assert swap_numbers(15,17)==(17,15)",
             "assert swap_numbers(100,200)==(200,100)"
-        ],
-        "completion": "\n   def swap_numbers(num1, num2):\n       return (num2, num1)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1672,8 +1546,7 @@
             "assert maximize_elements(((1, 3), (4, 5), (2, 9), (1, 10)), ((6, 7), (3, 9), (1, 1), (7, 3))) == ((6, 7), (4, 9), (2, 9), (7, 10))",
             "assert maximize_elements(((2, 4), (5, 6), (3, 10), (2, 11)), ((7, 8), (4, 10), (2, 2), (8, 4))) == ((7, 8), (5, 10), (3, 10), (8, 11))",
             "assert maximize_elements(((3, 5), (6, 7), (4, 11), (3, 12)), ((8, 9), (5, 11), (3, 3), (9, 5))) == ((8, 9), (6, 11), (4, 11), (9, 12))"
-        ],
-        "completion": "\n   def maximize_elements(tuple1, tuple2):\n       result = []\n       for i in range(len(tuple1)):\n           max_pair = []\n           for j in range(len(tuple1[i])):\n               max_pair.append(max(tuple1[i][j], tuple2[i][j]))\n           result.append(tuple(max_pair))\n       return tuple(result)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1685,8 +1558,7 @@
             "assert newman_prime(3) == 7",
             "assert newman_prime(4) == 17",
             "assert newman_prime(5) == 41"
-        ],
-        "completion": "\n   def newman_prime(n):\n       if n == 0:\n           return 1\n       if n == 1:\n           return 1\n       else:\n           return 2 * newman_prime(n-1) + newman_prime(n-2)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1698,8 +1570,7 @@
             "assert division_elements((10, 4, 6, 9),(5, 2, 3, 3)) == (2, 2, 2, 3)",
             "assert division_elements((12, 6, 8, 16),(6, 3, 4, 4)) == (2, 2, 2, 4)",
             "assert division_elements((20, 14, 36, 18),(5, 7, 6, 9)) == (4, 2, 6, 2)"
-        ],
-        "completion": "\n   def division_elements(tuple1, tuple2):\n       result = tuple(element1 / element2 for element1, element2 in zip(tuple1, tuple2))\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1711,8 +1582,7 @@
             "assert split_two_parts([1,1,2,3,4,4,5,1],3)==([1, 1, 2], [3, 4, 4, 5, 1])",
             "assert split_two_parts(['a', 'b', 'c', 'd'],2)==(['a', 'b'], ['c', 'd'])",
             "assert split_two_parts(['p', 'y', 't', 'h', 'o', 'n'],4)==(['p', 'y', 't', 'h'], ['o', 'n'])"
-        ],
-        "completion": "\n   def split_two_parts(lst, L):\n       part1 = lst[:L]\n       part2 = lst[L:]\n       return (part1, part2)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1724,8 +1594,7 @@
             "assert dog_age(12)==61",
             "assert dog_age(15)==73",
             "assert dog_age(24)==109"
-        ],
-        "completion": "\ndef dog_age(human_years):\n    if human_years == 1:\n        return 15\n    elif human_years == 2:\n        return 15 + 9\n    else:\n        return 15 + 9 + (human_years - 2) * 4\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1737,8 +1606,7 @@
             "assert list_split(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'],3)==[['a', 'd', 'g', 'j', 'm'], ['b', 'e', 'h', 'k', 'n'], ['c', 'f', 'i', 'l']]",
             "assert list_split([1,2,3,4,5,6,7,8,9,10,11,12,13,14],3)==[[1,4,7,10,13], [2,5,8,11,14], [3,6,9,12]]",
             "assert list_split(['python','java','C','C++','DBMS','SQL'],2)==[['python', 'C', 'DBMS'], ['java', 'C++', 'SQL']]"
-        ],
-        "completion": "\n   def list_split(lst, n):\n       result = []\n       for i in range(n):\n           sublist = []\n           for index, element in enumerate(lst):\n               if index % n == i:\n                   sublist.append(element)\n           result.append(sublist)\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1750,8 +1618,7 @@
             "assert lateralsurface_cube(5)==100",
             "assert lateralsurface_cube(9)==324",
             "assert lateralsurface_cube(10)==400"
-        ],
-        "completion": "\n   def lateralsurface_cube(side_length):\n       return 4 * (side_length ** 2)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1763,8 +1630,7 @@
             "assert square_Sum(2) == 10",
             "assert square_Sum(3) == 35",
             "assert square_Sum(4) == 84"
-        ],
-        "completion": "\n   def square_Sum(n):\n       sum = 0\n       for i in range(1, n + 1):\n           odd_number = 2 * i - 1\n           sum += odd_number ** 2\n       return sum\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1776,8 +1642,7 @@
             "assert find_star_num(3) == 37",
             "assert find_star_num(4) == 73",
             "assert find_star_num(5) == 121"
-        ],
-        "completion": "\ndef find_star_num(n):\n    return 6 * n * (n - 1) + 1\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1789,8 +1654,7 @@
             "assert ascii_value('A')==65",
             "assert ascii_value('R')==82",
             "assert ascii_value('S')==83"
-        ],
-        "completion": "\ndef ascii_value(char):\n    return ord(char)\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1802,8 +1666,7 @@
             "assert sum_even_and_even_index([5, 6, 12, 1, 18, 8]) == 30",
             "assert sum_even_and_even_index([3, 20, 17, 9, 2, 10, 18, 13, 6, 18]) == 26",
             "assert sum_even_and_even_index([5, 6, 12, 1]) == 12"
-        ],
-        "completion": "\n   def sum_even_and_even_index(lst):\n       sum_even = 0\n       for i in range(len(lst)):\n           if i % 2 == 0 and lst[i] % 2 == 0:\n               sum_even += lst[i]\n       return sum_even\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1815,8 +1678,7 @@
             "assert even_Power_Sum(2) == 1056",
             "assert even_Power_Sum(3) == 8832",
             "assert even_Power_Sum(1) == 32"
-        ],
-        "completion": "\n   def even_Power_Sum(n):\n       sum = 0\n       for i in range(1, n + 1):\n           even_number = 2 * i\n           fifth_power = even_number ** 5\n           sum += fifth_power\n       return sum\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1828,8 +1690,7 @@
             "assert rear_extract([(1, 'Rash', 21), (2, 'Varsha', 20), (3, 'Kil', 19)]) == [21, 20, 19]",
             "assert rear_extract([(1, 'Sai', 36), (2, 'Ayesha', 25), (3, 'Salman', 45)]) == [36, 25, 45]",
             "assert rear_extract([(1, 'Sudeep', 14), (2, 'Vandana', 36), (3, 'Dawood', 56)]) == [14, 36, 56]"
-        ],
-        "completion": "\n   def rear_extract(list_of_tuples):\n       result = []\n       for tup in list_of_tuples:\n           result.append(tup[-1])\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1841,8 +1702,7 @@
             "assert substract_elements((10, 4, 5), (2, 5, 18)) == (8, -1, -13)",
             "assert substract_elements((11, 2, 3), (24, 45 ,16)) == (-13, -43, -13)",
             "assert substract_elements((7, 18, 9), (10, 11, 12)) == (-3, 7, -3)"
-        ],
-        "completion": "\n   def substract_elements(tuple1, tuple2):\n       result = tuple(x - y for x, y in zip(tuple1, tuple2))\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1854,8 +1714,7 @@
             "assert even_binomial_Coeff_Sum(4) == 8",
             "assert even_binomial_Coeff_Sum(6) == 32",
             "assert even_binomial_Coeff_Sum(2) == 2"
-        ],
-        "completion": "\ndef even_binomial_Coeff_Sum(n):\n    def binomial_coefficient(n, k):\n        if k > n - k:\n            k = n - k\n        res = 1\n        for i in range(k):\n            res = res * (n - i)\n            res = res // (i + 1)\n        return res\n    \n    sum = 0\n    for k in range(0, n + 1, 2):\n        sum += binomial_coefficient(n, k)\n    return sum\n\n# Test cases\nassert even_binomial_Coeff_Sum(4) == 8\nassert even_binomial_Coeff_Sum(6) == 32\nassert even_binomial_Coeff_Sum(2) == 2\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1869,8 +1728,7 @@
             "assert math.isclose(volume_cylinder(10,5), 1570.7500000000002, rel_tol=0.001)",
             "assert math.isclose(volume_cylinder(4,5), 251.32000000000002, rel_tol=0.001)",
             "assert math.isclose(volume_cylinder(4,10), 502.64000000000004, rel_tol=0.001)"
-        ],
-        "completion": "\n   import math\n\n   def volume_cylinder(radius, height):\n       volume = math.pi * (radius ** 2) * height\n       return volume\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1882,8 +1740,7 @@
             "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},170)=={'Cierra Vega': 175, 'Alden Cantrell': 180, 'Pierre Cox': 190}",
             "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},180)=={ 'Alden Cantrell': 180, 'Pierre Cox': 190}",
             "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},190)=={ 'Pierre Cox': 190}"
-        ],
-        "completion": "\ndef dict_filter(dictionary, n):\n    result = {}\n    for key, value in dictionary.items():\n        if value >= n:\n            result[key] = value\n    return result\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1895,8 +1752,7 @@
             "assert count_first_elements((1, 5, 7, (4, 6), 10) ) == 3",
             "assert count_first_elements((2, 9, (5, 7), 11) ) == 2",
             "assert count_first_elements((11, 15, 5, 8, (2, 3), 8) ) == 4"
-        ],
-        "completion": "\n   def count_first_elements(input_tuple):\n       for index, element in enumerate(input_tuple):\n           if isinstance(element, tuple):\n               return index\n       return 0\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1908,8 +1764,7 @@
             "assert is_num_decagonal(3) == 27",
             "assert is_num_decagonal(7) == 175",
             "assert is_num_decagonal(10) == 370"
-        ],
-        "completion": "\ndef is_num_decagonal(n):\n    # Calculate the nth decagonal number using the formula\n    decagonal_number = 4 * n**2 - 3 * n\n    return decagonal_number\n\n# Test cases\nassert is_num_decagonal(3) == 27\nassert is_num_decagonal(7) == 175\nassert is_num_decagonal(10) == 370\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1921,8 +1776,7 @@
             "assert sequential_search([11,23,58,31,56,77,43,12,65,19],31) == (True, 3)",
             "assert sequential_search([12, 32, 45, 62, 35, 47, 44, 61],61) == (True, 7)",
             "assert sequential_search([9, 10, 17, 19, 22, 39, 48, 56],48) == (True, 6)"
-        ],
-        "completion": "\n   def sequential_search(array, element):\n       for i in range(len(array)):\n           if array[i] == element:\n               return (True, i)\n       return (False, -1)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1934,8 +1788,7 @@
             "assert all_unique([1,2,3]) == True",
             "assert all_unique([1,2,1,2]) == False",
             "assert all_unique([1,2,3,4,5]) == True"
-        ],
-        "completion": "\ndef all_unique(lst):\n    seen = set()\n    for item in lst:\n        if item in seen:\n            return False\n        seen.add(item)\n    return True\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1947,8 +1800,7 @@
             "assert sub_list([1, 2, 3],[4,5,6])==[-3,-3,-3]",
             "assert sub_list([1,2],[3,4])==[-2,-2]",
             "assert sub_list([90,120],[50,70])==[40,50]"
-        ],
-        "completion": "\n   def sub_list(list1, list2):\n       result = []\n       for i in range(len(list1)):\n           difference = list1[i] - list2[i]\n           result.append(difference)\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1960,8 +1812,7 @@
             "assert validate(1234) == True",
             "assert validate(51241) == False",
             "assert validate(321) == True"
-        ],
-        "completion": "\n   def validate(number):\n       num_str = str(number)\n       for digit in num_str:\n           if num_str.count(digit) > int(digit):\n               return False\n       return True\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1973,8 +1824,7 @@
             "assert check_element([\"green\", \"orange\", \"black\", \"white\"],'blue')==False",
             "assert check_element([1,2,3,4],7)==False",
             "assert check_element([\"green\", \"green\", \"green\", \"green\"],'green')==True"
-        ],
-        "completion": "\n   def check_element(lst, elem):\n       for item in lst:\n           if item != elem:\n               return False\n       return True\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1986,8 +1836,7 @@
             "assert text_match_two_three(\"ac\")==(False)",
             "assert text_match_two_three(\"dc\")==(False)",
             "assert text_match_two_three(\"abbbba\")==(True)"
-        ],
-        "completion": "\n   import re\n\n   def text_match_two_three(text):\n       patterns = 'ab{2,3}'\n       if re.search(patterns, text):\n           return True\n       else:\n           return False\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -1999,8 +1848,7 @@
             "assert max_sub_array_sum_repeated([10, 20, -30, -1], 4, 3) == 30",
             "assert max_sub_array_sum_repeated([-1, 10, 20], 3, 2) == 59",
             "assert max_sub_array_sum_repeated([-1, -2, -3], 3, 3) == -1"
-        ],
-        "completion": "\n   def max_sub_array_sum_repeated(arr, n, k):\n       # Form the modified array by repeating arr k times\n       modified_array = arr * k\n       \n       # Use Kadane's algorithm to find the maximum sum subarray in the modified array\n       max_so_far = float('-inf')\n       max_ending_here = 0\n       \n       for num in modified_array:\n           max_ending_here = max_ending_here + num\n           if max_so_far < max_ending_here:\n               max_so_far = max_ending_here\n           if max_ending_here < 0:\n               max_ending_here = 0\n       \n       return max_so_far\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2012,8 +1860,7 @@
             "assert square_Sum(2) == 20",
             "assert square_Sum(3) == 56",
             "assert square_Sum(4) == 120"
-        ],
-        "completion": "\n   def square_Sum(n):\n       sum = 0\n       for i in range(1, n + 1):\n           even_number = 2 * i\n           square_of_even_number = even_number ** 2\n           sum += square_of_even_number\n       return sum\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2025,8 +1872,7 @@
             "assert max_length([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(3, [13, 15, 17])",
             "assert max_length([[1], [5, 7], [10, 12, 14,15]])==(4, [10, 12, 14,15])",
             "assert max_length([[5], [15,20,25]])==(3, [15,20,25])"
-        ],
-        "completion": "\ndef max_length(list_of_lists):\n    max_len = 0\n    max_list = []\n    for sublist in list_of_lists:\n        if len(sublist) > max_len:\n            max_len = len(sublist)\n            max_list = sublist\n    return (max_len, max_list)\n"
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2038,8 +1884,7 @@
             "assert count_no_of_ways(2, 4) == 16",
             "assert count_no_of_ways(3, 2) == 6",
             "assert count_no_of_ways(4, 4) == 228"
-        ],
-        "completion": "\ndef count_no_of_ways(n, k):\n    if n == 0:\n        return 0\n    if n == 1:\n        return k\n    \n    # Initialize dp array\n    dp = [0] * (n + 1)\n    dp[1] = k\n    dp[2] = k * k\n    \n    for i in range(3, n + 1):\n        dp[i] = (dp[i-1] * (k-1)) + (dp[i-2] * (k-1))\n    \n    return dp[n]\n\n# Test cases\nassert count_no_of_ways(2, 4) == 16\nassert count_no_of_ways(3, 2) == 6\nassert count_no_of_ways(4, 4) == 228\n"
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2051,8 +1896,7 @@
             "assert find(10,3) == 3",
             "assert find(4,2) == 2",
             "assert find(20,5) == 4"
-        ],
-        "completion": "\n   def find(num1, num2):\n       return num1 // num2\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2064,8 +1908,7 @@
             "assert otherside_rightangle(7,8)==10.63014581273465",
             "assert otherside_rightangle(3,4)==5",
             "assert otherside_rightangle(7,15)==16.55294535724685"
-        ],
-        "completion": "\nimport math\n\ndef otherside_rightangle(a, b):\n    # Check if a is the hypotenuse\n    if a > b:\n        c = math.sqrt(a**2 - b**2)\n    # Check if b is the hypotenuse\n    elif b > a:\n        c = math.sqrt(b**2 - a**2)\n    # If neither a nor b is the hypotenuse, find the hypotenuse\n    else:\n        c = math.sqrt(a**2 + b**2)\n    \n    # Round the result to match the test cases\n    return round(c, 10)\n\n# Test cases\nassert otherside_rightangle(7, 8) == 10.6301458127\nassert otherside_rightangle(3, 4) == 5\nassert otherside_rightangle(7, 15) == 16.5529453572\n"
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2077,8 +1920,7 @@
             "assert max_val(['Python', 3, 2, 4, 5, 'version'])==5",
             "assert max_val(['Python', 15, 20, 25])==25",
             "assert max_val(['Python', 30, 20, 40, 50, 'version'])==50"
-        ],
-        "completion": "\ndef max_val(lst):\n    # Filter out integers from the list\n    filtered_ints = [item for item in lst if isinstance(item, int)]\n    # Find the maximum value among the filtered integers\n    max_value = max(filtered_ints)\n    return max_value\n"
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2090,8 +1932,7 @@
             "assert sum_div(8)==7",
             "assert sum_div(12)==16",
             "assert sum_div(7)==1"
-        ],
-        "completion": "\n   def sum_div(number):\n       sum = 0\n       for i in range(1, number + 1):\n           if number % i == 0:\n               sum += i\n       return sum\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2103,8 +1944,7 @@
             "assert get_Inv_Count([1,20,6,4,5]) == 5",
             "assert get_Inv_Count([1,2,1]) == 1",
             "assert get_Inv_Count([1,2,5,6,1]) == 3"
-        ],
-        "completion": "\n   def get_Inv_Count(arr):\n       inv_count = 0\n       for i in range(len(arr)):\n           for j in range(i + 1, len(arr)):\n               if arr[i] > arr[j]:\n                   inv_count += 1\n       return inv_count\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2116,8 +1956,7 @@
             "assert flatten_list([0, 10, [20, 30], 40, 50, [60, 70, 80], [90, 100, 110, 120]])==[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]",
             "assert flatten_list([[10, 20], [40], [30, 56, 25], [10, 20], [33], [40]])==[10, 20, 40, 30, 56, 25, 10, 20, 33, 40]",
             "assert flatten_list([[1,2,3], [4,5,6], [10,11,12], [7,8,9]])==[1, 2, 3, 4, 5, 6, 10, 11, 12, 7, 8, 9]"
-        ],
-        "completion": "\n   def flatten_list(nested_list):\n       result = []\n       for item in nested_list:\n           if isinstance(item, list):\n               result.extend(flatten_list(item))\n           else:\n               result.append(item)\n       return result\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2129,8 +1968,7 @@
             "assert max_aggregate([('Juan Whelan',90),('Sabah Colley',88),('Peter Nichols',7),('Juan Whelan',122),('Sabah Colley',84)])==('Juan Whelan', 212)",
             "assert max_aggregate([('Juan Whelan',50),('Sabah Colley',48),('Peter Nichols',37),('Juan Whelan',22),('Sabah Colley',14)])==('Juan Whelan', 72)",
             "assert max_aggregate([('Juan Whelan',10),('Sabah Colley',20),('Peter Nichols',30),('Juan Whelan',40),('Sabah Colley',50)])==('Sabah Colley', 70)"
-        ],
-        "completion": "\n   def max_aggregate(list_of_tuples):\n       score_dict = {}\n       for name, score in list_of_tuples:\n           if name in score_dict:\n               score_dict[name] += score\n           else:\n               score_dict[name] = score\n       max_name = max(score_dict, key=score_dict.get)\n       return (max_name, score_dict[max_name])\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2144,8 +1982,7 @@
             "assert math.isclose(count_binary_seq(1), 2.0, rel_tol=0.001)",
             "assert math.isclose(count_binary_seq(2), 6.0, rel_tol=0.001)",
             "assert math.isclose(count_binary_seq(3), 20.0, rel_tol=0.001)"
-        ],
-        "completion": "\nimport math\n\ndef count_binary_seq(n):\n    # Calculate the binomial coefficient (2n choose n)\n    binomial_coefficient = math.comb(2 * n, n)\n    \n    # Calculate the n-th Catalan number using the formula\n    catalan_number = binomial_coefficient / (n + 1)\n    \n    return catalan_number\n\n# Test cases\nassert math.isclose(count_binary_seq(1), 2.0, rel_tol=0.001)\nassert math.isclose(count_binary_seq(2), 6.0, rel_tol=0.001)\nassert math.isclose(count_binary_seq(3), 20.0, rel_tol=0.001)\n"
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2157,8 +1994,7 @@
             "assert dict_depth({'a':1, 'b': {'c': {'d': {}}}})==4",
             "assert dict_depth({'a':1, 'b': {'c':'python'}})==2",
             "assert dict_depth({1: 'Sun', 2: {3: {4:'Mon'}}})==3"
-        ],
-        "completion": "\n   def dict_depth(d):\n       if not isinstance(d, dict) or not d:\n           return 0\n       max_depth = 0\n       for key in d:\n           if isinstance(d[key], dict):\n               depth = dict_depth(d[key])\n               max_depth = max(max_depth, depth + 1)\n       return max_depth + 1\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2170,8 +2006,7 @@
             "assert find_Element([1,2,3,4,5],[[0,2],[0,3]],2,1) == 3",
             "assert find_Element([1,2,3,4],[[0,1],[0,2]],1,2) == 3",
             "assert find_Element([1,2,3,4,5,6],[[0,1],[0,2]],1,1) == 1"
-        ],
-        "completion": "\n   def find_Element(arr, rotations, index, target_index):\n       for rotation in rotations:\n           start_index, end_index = rotation\n           temp = arr[start_index]\n           for i in range(start_index, end_index):\n               arr[i] = arr[i + 1]\n           arr[end_index] = temp\n       return arr[target_index]\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2183,8 +2018,7 @@
             "assert start_withp([\"Python PHP\", \"Java JavaScript\", \"c c++\"])==('Python', 'PHP')",
             "assert start_withp([\"Python Programming\",\"Java Programming\"])==('Python','Programming')",
             "assert start_withp([\"Pqrst Pqr\",\"qrstuv\"])==('Pqrst','Pqr')"
-        ],
-        "completion": "\n   def start_withp(words_list):\n       result = []\n       for string in words_list:\n           words = string.split()\n           for word in words:\n               if word.startswith('p') or word.startswith('P'):\n                   result.append(word)\n                   if len(result) == 2:\n                       return tuple(result)\n       return tuple(result)\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2196,8 +2030,7 @@
             "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 4, 6) == 11",
             "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 2, 5) == 7",
             "assert max_sum_increasing_subseq([11, 15, 19, 21, 26, 28, 31], 7, 2, 4) == 71"
-        ],
-        "completion": "\ndef max_sum_increasing_subseq(arr, n, i, k):\n    # Initialize dp array with the same values as arr\n    dp = arr[:]\n    \n    # Iterate through the array to fill dp array\n    for j in range(n):\n        for l in range(j):\n            if arr[j] > arr[l] and dp[j] < dp[l] + arr[j]:\n                dp[j] = dp[l] + arr[j]\n    \n    # Find the maximum sum up to index i\n    max_sum_up_to_i = dp[i]\n    \n    # Check if the kth element can be included\n    if k > i and arr[k] > arr[i]:\n        max_sum_up_to_i += arr[k]\n    \n    return max_sum_up_to_i\n\n# Test cases\nassert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 4, 6) == 11\nassert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 2, 5) == 7\nassert max_sum_increasing_subseq([11, 15, 19, 21, 26, 28, 31], 7, 2, 4) == 71\n"
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2209,8 +2042,7 @@
             "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True)",
             "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,100)==((\"HELLO\", 5, [100],True))",
             "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,500)==(\"HELLO\", 5, [500], True)"
-        ],
-        "completion": "\n   def colon_tuplex(original_tuple, index, value):\n       # Convert the tuple to a list to modify it\n       new_list = list(original_tuple)\n       # Replace the element at the specified index with a list containing the value\n       new_list[index] = [value]\n       # Convert the list back to a tuple and return it\n       return tuple(new_list)\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2222,8 +2054,7 @@
             "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]",
             "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],4)==[60, 54, 50, 48]",
             "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],5)==[60, 54, 50, 48, 45]"
-        ],
-        "completion": "\n   def large_product(list1, list2, N):\n       products = []\n       for num1 in list1:\n           for num2 in list2:\n               products.append(num1 * num2)\n       products.sort(reverse=True)\n       return products[:N]\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2235,8 +2066,7 @@
             "assert maximum(5,10) == 10",
             "assert maximum(-1,-2) == -1",
             "assert maximum(9,7) == 9"
-        ],
-        "completion": "\n   def maximum(a, b):\n       if a > b:\n           return a\n       else:\n           return b\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2248,8 +2078,7 @@
             "assert string_to_tuple(\"python 3.0\")==('p', 'y', 't', 'h', 'o', 'n', '3', '.', '0')",
             "assert string_to_tuple(\"item1\")==('i', 't', 'e', 'm', '1')",
             "assert string_to_tuple(\"15.10\")==('1', '5', '.', '1', '0')"
-        ],
-        "completion": "\n   def string_to_tuple(input_string):\n       result_tuple = tuple(input_string)\n       return result_tuple\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2261,8 +2090,7 @@
             "assert set_left_most_unset_bit(10) == 14",
             "assert set_left_most_unset_bit(12) == 14",
             "assert set_left_most_unset_bit(15) == 15"
-        ],
-        "completion": "\n   def set_left_most_unset_bit(n):\n       if n & (n + 1) == 0:  # Check if all bits are set\n           return n\n       pos = 0\n       temp = n\n       while temp & 1 == 1:\n           temp >>= 1\n           pos += 1\n       return n | (1 << pos)\n\n   # Test cases\n   assert set_left_most_unset_bit(10) == 14\n   assert set_left_most_unset_bit(12) == 14\n   assert set_left_most_unset_bit(15) == 15\n   "
+        ]
     },
     {
         "source_file": "Ellen's Copy of Benchmark Questions Verification V2.ipynb",
@@ -2276,8 +2104,7 @@
             "assert math.isclose(volume_cone(5,12), 314.15926535897927, rel_tol=0.001)",
             "assert math.isclose(volume_cone(10,15), 1570.7963267948965, rel_tol=0.001)",
             "assert math.isclose(volume_cone(19,17), 6426.651371693521, rel_tol=0.001)"
-        ],
-        "completion": "\n   import math\n\n   def volume_cone(radius, height):\n       volume = (1/3) * math.pi * (radius ** 2) * height\n       return volume\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2289,8 +2116,7 @@
             "assert highest_Power_of_2(10) == 8",
             "assert highest_Power_of_2(19) == 16",
             "assert highest_Power_of_2(32) == 32"
-        ],
-        "completion": "\n   def highest_Power_of_2(n):\n       result = 1\n       while result * 2 <= n:\n           result *= 2\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2302,8 +2128,7 @@
             "assert find_lucas(9) == 76",
             "assert find_lucas(4) == 7",
             "assert find_lucas(3) == 4"
-        ],
-        "completion": "\n   def find_lucas(n):\n       if n == 0:\n           return 2\n       elif n == 1:\n           return 1\n       else:\n           a, b = 2, 1\n           for i in range(2, n + 1):\n               c = a + b\n               a = b\n               b = c\n           return b\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2315,8 +2140,7 @@
             "assert add_string([1,2,3,4],'temp{0}')==['temp1', 'temp2', 'temp3', 'temp4']",
             "assert add_string(['a','b','c','d'], 'python{0}')==[ 'pythona', 'pythonb', 'pythonc', 'pythond']",
             "assert add_string([5,6,7,8],'string{0}')==['string5', 'string6', 'string7', 'string8']"
-        ],
-        "completion": "\n   def add_string(lst, fmt):\n       result = []\n       for item in lst:\n           formatted_item = fmt.format(item)\n           result.append(formatted_item)\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2328,8 +2152,7 @@
             "assert convert_list_dictionary([\"S001\", \"S002\", \"S003\", \"S004\"],[\"Adina Park\", \"Leyton Marsh\", \"Duncan Boyle\", \"Saim Richards\"] ,[85, 98, 89, 92])==[{'S001': {'Adina Park': 85}}, {'S002': {'Leyton Marsh': 98}}, {'S003': {'Duncan Boyle': 89}}, {'S004': {'Saim Richards': 92}}]",
             "assert convert_list_dictionary([\"abc\",\"def\",\"ghi\",\"jkl\"],[\"python\",\"program\",\"language\",\"programs\"],[100,200,300,400])==[{'abc':{'python':100}},{'def':{'program':200}},{'ghi':{'language':300}},{'jkl':{'programs':400}}]",
             "assert convert_list_dictionary([\"A1\",\"A2\",\"A3\",\"A4\"],[\"java\",\"C\",\"C++\",\"DBMS\"],[10,20,30,40])==[{'A1':{'java':10}},{'A2':{'C':20}},{'A3':{'C++':30}},{'A4':{'DBMS':40}}]"
-        ],
-        "completion": "\n   def convert_list_dictionary(list1, list2, list3):\n       result = []\n       for i in range(len(list1)):  # assuming all lists are of the same length\n           nested_dict = {list1[i]: {list2[i]: list3[i]}}\n           result.append(nested_dict)\n       return result\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2341,8 +2164,7 @@
             "assert get_max_sum(60) == 106",
             "assert get_max_sum(10) == 12",
             "assert get_max_sum(2) == 2"
-        ],
-        "completion": "\n   def get_max_sum(n):\n       dp = {0: 0, 1: 1}\n       \n       for i in range(2, n + 1):\n           dp[i] = max(i, dp.get(i // 2, 0) + dp.get(i // 3, 0) + dp.get(i // 4, 0) + dp.get(i // 5, 0))\n       \n       return dp[n]\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2354,8 +2176,7 @@
             "assert max_length_list([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(3, [13, 15, 17])",
             "assert max_length_list([[1,2,3,4,5],[1,2,3,4],[1,2,3],[1,2],[1]])==(5,[1,2,3,4,5])",
             "assert max_length_list([[3,4,5],[6,7,8,9],[10,11,12]])==(4,[6,7,8,9])"
-        ],
-        "completion": "\n   def max_length_list(list_of_lists):\n       max_length = 0\n       max_list = []\n       for sublist in list_of_lists:\n           if len(sublist) > max_length:\n               max_length = len(sublist)\n               max_list = sublist\n       return (max_length, max_list)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2367,8 +2188,7 @@
             "assert check_distinct((1, 4, 5, 6, 1, 4)) == False",
             "assert check_distinct((1, 4, 5, 6)) == True",
             "assert check_distinct((2, 3, 4, 5, 6)) == True"
-        ],
-        "completion": "\n   def check_distinct(input_tuple):\n       set_version = set(input_tuple)\n       return len(set_version) == len(input_tuple)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2380,8 +2200,7 @@
             "assert first_non_repeating_character(\"abcabc\") == None",
             "assert first_non_repeating_character(\"abc\") == \"a\"",
             "assert first_non_repeating_character(\"ababc\") == \"c\""
-        ],
-        "completion": "\n   def first_non_repeating_character(s):\n       char_count = {}\n       # Count occurrences of each character\n       for char in s:\n           if char in char_count:\n               char_count[char] += 1\n           else:\n               char_count[char] = 1\n       # Find the first non-repeating character\n       for char in s:\n           if char_count[char] == 1:\n               return char\n       return None\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2393,8 +2212,7 @@
             "assert check_char(\"abba\") == \"Valid\"",
             "assert check_char(\"a\") == \"Valid\"",
             "assert check_char(\"abcd\") == \"Invalid\""
-        ],
-        "completion": "\n   def check_char(s):\n       if len(s) < 1:\n           return \"Invalid\"\n       first_char = s[0]\n       last_char = s[-1]\n       if first_char == last_char:\n           return \"Valid\"\n       else:\n           return \"Invalid\"\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2406,8 +2224,7 @@
             "assert median_numbers(25,55,65)==55.0",
             "assert median_numbers(20,10,30)==20.0",
             "assert median_numbers(15,45,75)==45.0"
-        ],
-        "completion": "\n   def median_numbers(a, b, c):\n       if a < b:\n           if b < c:\n               return b\n           elif a < c:\n               return c\n           else:\n               return a\n       else:\n           if a < c:\n               return a\n           elif b < c:\n               return c\n           else:\n               return b\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2419,8 +2236,7 @@
             "assert sum_of_digits([10,2,56])==14",
             "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19",
             "assert sum_of_digits([10,20,-4,5,-70])==19"
-        ],
-        "completion": "\n   def sum_of_digits(lst):\n       total_sum = 0\n       for item in lst:\n           if isinstance(item, (int, float)):\n               item_str = str(item)\n               for char in item_str:\n                   if char.isdigit():\n                       total_sum += int(char)\n       return total_sum\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2432,8 +2248,7 @@
             "assert bitwise_xor((10, 4, 6, 9), (5, 2, 3, 3)) == (15, 6, 5, 10)",
             "assert bitwise_xor((11, 5, 7, 10), (6, 3, 4, 4)) == (13, 6, 3, 14)",
             "assert bitwise_xor((12, 6, 8, 11), (7, 4, 5, 6)) == (11, 2, 13, 13)"
-        ],
-        "completion": "\ndef bitwise_xor(tuple1, tuple2):\n    result = []\n    for i in range(len(tuple1)):\n        xor_result = tuple1[i] ^ tuple2[i]\n        result.append(xor_result)\n    return tuple(result)\n"
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2445,8 +2260,7 @@
             "assert extract_freq([(3, 4), (1, 2), (4, 3), (5, 6)] ) == 3",
             "assert extract_freq([(4, 15), (2, 3), (5, 4), (6, 7)] ) == 4",
             "assert extract_freq([(5, 16), (2, 3), (6, 5), (6, 9)] ) == 4"
-        ],
-        "completion": "\n   def extract_freq(list_of_tuples):\n       unique_sets = set()\n       for t in list_of_tuples:\n           unique_sets.add(frozenset(t))\n       return len(unique_sets)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2458,8 +2272,7 @@
             "assert add_nested_tuples(((1, 3), (4, 5), (2, 9), (1, 10)), ((6, 7), (3, 9), (1, 1), (7, 3))) == ((7, 10), (7, 14), (3, 10), (8, 13))",
             "assert add_nested_tuples(((2, 4), (5, 6), (3, 10), (2, 11)), ((7, 8), (4, 10), (2, 2), (8, 4))) == ((9, 12), (9, 16), (5, 12), (10, 15))",
             "assert add_nested_tuples(((3, 5), (6, 7), (4, 11), (3, 12)), ((8, 9), (5, 11), (3, 3), (9, 5))) == ((11, 14), (11, 18), (7, 14), (12, 17))"
-        ],
-        "completion": "\n   def add_nested_tuples(tuple1, tuple2):\n       result = []\n       for i in range(len(tuple1)):\n           inner_result = []\n           for j in range(len(tuple1[i])):\n               inner_result.append(tuple1[i][j] + tuple2[i][j])\n           result.append(tuple(inner_result))\n       return tuple(result)\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2471,8 +2284,7 @@
             "assert minimum(1,2) == 1",
             "assert minimum(-5,-4) == -5",
             "assert minimum(0,0) == 0"
-        ],
-        "completion": "\n   def minimum(a, b):\n       if a < b:\n           return a\n       else:\n           return b\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2484,8 +2296,7 @@
             "assert check_tuplex((\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"),'r')==True",
             "assert check_tuplex((\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"),'5')==False",
             "assert check_tuplex((\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\",\"e\"),3)==True"
-        ],
-        "completion": "\n   def check_tuplex(tuplex, element):\n       return element in tuplex\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2497,8 +2308,7 @@
             "assert find_Parity(12) == False",
             "assert find_Parity(7) == True",
             "assert find_Parity(10) == False"
-        ],
-        "completion": "\n   def find_Parity(number):\n       # Convert the number to binary and count the number of '1's\n       binary_representation = bin(number)[2:]  # [2:] to remove the '0b' prefix\n       count_of_ones = binary_representation.count('1')\n       \n       # Check if the count of '1's is odd\n       return count_of_ones % 2 == 1\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2510,8 +2320,7 @@
             "assert rearrange_bigger(12)==21",
             "assert rearrange_bigger(10)==False",
             "assert rearrange_bigger(102)==120"
-        ],
-        "completion": "\n   def rearrange_bigger(num):\n       digits = list(str(num))\n       n = len(digits)\n       \n       # Step 1: Find the first digit from the right that is smaller than the digit next to it\n       i = n - 2\n       while i >= 0 and digits[i] >= digits[i + 1]:\n           i -= 1\n       \n       # If no such digit is found, return False\n       if i == -1:\n           return False\n       \n       # Step 2: Find the smallest digit on the right side of i that is larger than digits[i]\n       j = n - 1\n       while digits[j] <= digits[i]:\n           j -= 1\n       \n       # Step 3: Swap digits[i] and digits[j]\n       digits[i], digits[j] = digits[j], digits[i]\n       \n       # Step 4: Sort the digits to the right of i in ascending order\n       digits[i + 1:] = sorted(digits[i + 1:])\n       \n       # Convert digits back to number\n       new_num = int(''.join(digits))\n       return new_num\n\n   # Test cases\n   assert rearrange_bigger(12) == 21\n   assert rearrange_bigger(10) == False\n   assert rearrange_bigger(102) == 120\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2523,8 +2332,7 @@
             "assert k_smallest_pairs([1,3,7],[2,4,6],2)==[[1, 2], [1, 4]]",
             "assert k_smallest_pairs([1,3,7],[2,4,6],1)==[[1, 2]]",
             "assert k_smallest_pairs([1,3,7],[2,4,6],7)==[[1, 2], [1, 4], [3, 2], [1, 6], [3, 4], [3, 6], [7, 2]]"
-        ],
-        "completion": "\n   def k_smallest_pairs(arr1, arr2, k):\n       pairs = []\n       for num1 in arr1:\n           for num2 in arr2:\n               pairs.append([num1, num2])\n       pairs.sort(key=lambda x: x[0] + x[1])\n       return pairs[:k]\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2536,8 +2344,7 @@
             "assert min_product_tuple([(2, 7), (2, 6), (1, 8), (4, 9)] )==8",
             "assert min_product_tuple([(10,20), (15,2), (5,10)] )==30",
             "assert min_product_tuple([(11,44), (10,15), (20,5), (12, 9)] )==100"
-        ],
-        "completion": "\n   def min_product_tuple(list_of_tuples):\n       min_product = float('inf')  # Initialize with a very large number\n       for a, b in list_of_tuples:\n           product = a * b\n           if product < min_product:\n               min_product = product\n       return min_product\n   "
+        ]
     },
     {
         "source_file": "Benchmark Questions Verification V2.ipynb",
@@ -2549,8 +2356,7 @@
             "assert min_val(['Python', 3, 2, 4, 5, 'version'])==2",
             "assert min_val(['Python', 15, 20, 25])==15",
             "assert min_val(['Python', 30, 20, 40, 50, 'version'])==20"
-        ],
-        "completion": "\ndef min_val(lst):\n    # Filter out numeric values from the list\n    numeric_values = [x for x in lst if isinstance(x, (int, float))]\n    \n    # Find the minimum value among the filtered numeric values\n    min_value = min(numeric_values)\n    \n    return min_value\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2562,8 +2368,7 @@
             "assert snake_to_camel('android_tv') == 'AndroidTv'",
             "assert snake_to_camel('google_pixel') == 'GooglePixel'",
             "assert snake_to_camel('apple_watch') == 'AppleWatch'"
-        ],
-        "completion": "\ndef snake_to_camel(snake_str):\n    words = snake_str.split('_')\n    result = words[0]\n    for word in words[1:]:\n        result += word.capitalize()\n    return result\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2575,8 +2380,7 @@
             "assert remove_odd([1,2,3]) == [2]",
             "assert remove_odd([2,4,6]) == [2,4,6]",
             "assert remove_odd([10,20,3]) == [10,20]"
-        ],
-        "completion": "\ndef remove_odd(lst):\n    # Using list comprehension to filter out odd numbers\n    return [num for num in lst if num % 2 == 0]\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2588,8 +2392,7 @@
             "assert extract_nth_element([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)] ,0)==['Greyson Fulton', 'Brady Kent', 'Wyatt Knott', 'Beau Turnbull']",
             "assert extract_nth_element([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)] ,2)==[99, 96, 94, 98]",
             "assert extract_nth_element([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)],1)==[98, 97, 91, 94]"
-        ],
-        "completion": "\n   def extract_nth_element(list_of_tuples, n):\n       result = []\n       for tup in list_of_tuples:\n           result.append(tup[n])\n       return result\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2601,8 +2404,7 @@
             "assert overlapping([1,2,3,4,5],[6,7,8,9]) == False",
             "assert overlapping([1,2,3],[4,5,6]) == False",
             "assert overlapping([1,4,5],[1,4,5]) == True"
-        ],
-        "completion": "\n   def overlapping(seq1, seq2):\n       for element in seq1:\n           if element in seq2:\n               return True\n       return False\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2614,8 +2416,7 @@
             "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)",
             "assert max_Product([0,-1,-2,-4,5,0,-6]) == (-4,-6)",
             "assert max_Product([1,2,3]) == (2,3)"
-        ],
-        "completion": "\n   def max_Product(arr):\n       arr.sort()\n       # Product of the two largest numbers\n       product1 = arr[-1] * arr[-2]\n       # Product of the two smallest numbers (in case of negative numbers)\n       product2 = arr[0] * arr[1]\n       \n       if product1 > product2:\n           return (arr[-2], arr[-1])\n       else:\n           return (arr[0], arr[1])\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2627,8 +2428,7 @@
             "assert group_tuples([('x', 'y'), ('x', 'z'), ('w', 't')]) == [('x', 'y', 'z'), ('w', 't')]",
             "assert group_tuples([('a', 'b'), ('a', 'c'), ('d', 'e')]) == [('a', 'b', 'c'), ('d', 'e')]",
             "assert group_tuples([('f', 'g'), ('f', 'g'), ('h', 'i')]) == [('f', 'g', 'g'), ('h', 'i')]"
-        ],
-        "completion": "\n   def group_tuples(tuples_list):\n       result_dict = {}\n       for first, second in tuples_list:\n           if first in result_dict:\n               result_dict[first].append(second)\n           else:\n               result_dict[first] = [second]\n       result_list = [(key, *value) for key, value in result_dict.items()]\n       return result_list\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2640,8 +2440,7 @@
             "assert Find_Max([['A'],['A','B'],['A','B','C']]) == ['A','B','C']",
             "assert Find_Max([[1],[1,2],[1,2,3]]) == [1,2,3]",
             "assert Find_Max([[1,1],[1,2,3],[1,5,6,1]]) == [1,5,6,1]"
-        ],
-        "completion": "\n   def Find_Max(list_of_lists):\n       max_length = 0\n       max_list = []\n       for sublist in list_of_lists:\n           if len(sublist) > max_length:\n               max_length = len(sublist)\n               max_list = sublist\n       return max_list\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2653,8 +2452,7 @@
             "assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243",
             "assert round_and_sum([5,2,9,24.3,29])==345",
             "assert round_and_sum([25.0,56.7,89.2])==513"
-        ],
-        "completion": "\ndef round_and_sum(numbers):\n    # Initialize the sum of rounded numbers\n    rounded_sum = 0\n    \n    # Iterate through each number in the list\n    for num in numbers:\n        # Round the number to the nearest integer and add it to the sum\n        rounded_sum += round(num)\n    \n    # Calculate the final result by multiplying the sum by the length of the list\n    result = rounded_sum * len(numbers)\n    \n    # Return the final result\n    return result\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2666,8 +2464,7 @@
             "assert cube_Sum(2) == 72",
             "assert cube_Sum(3) == 288",
             "assert cube_Sum(4) == 800"
-        ],
-        "completion": "\n   def cube_Sum(n):\n       sum = 0\n       for i in range(1, n + 1):\n           even_number = 2 * i\n           cube = even_number ** 3\n           sum += cube\n       return sum\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2679,8 +2476,7 @@
             "assert concatenate_tuple((\"ID\", \"is\", 4, \"UTS\") ) == 'ID-is-4-UTS'",
             "assert concatenate_tuple((\"QWE\", \"is\", 4, \"RTY\") ) == 'QWE-is-4-RTY'",
             "assert concatenate_tuple((\"ZEN\", \"is\", 4, \"OP\") ) == 'ZEN-is-4-OP'"
-        ],
-        "completion": "\n   def concatenate_tuple(tup):\n       result = \"\"\n       for i, element in enumerate(tup):\n           if i != 0:\n               result += \"-\"\n           result += str(element)\n       return result\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2692,8 +2488,7 @@
             "assert find_Average_Of_Cube(2) == 4.5",
             "assert find_Average_Of_Cube(3) == 12",
             "assert find_Average_Of_Cube(1) == 1"
-        ],
-        "completion": "\n   def find_Average_Of_Cube(n):\n       sum_of_cubes = 0\n       for i in range(1, n + 1):\n           sum_of_cubes += i ** 3\n       average = sum_of_cubes / n\n       return average\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2705,8 +2500,7 @@
             "assert extract_rear(('Mers', 'for', 'Vers') ) == ['s', 'r', 's']",
             "assert extract_rear(('Avenge', 'for', 'People') ) == ['e', 'r', 'e']",
             "assert extract_rear(('Gotta', 'get', 'go') ) == ['a', 't', 'o']"
-        ],
-        "completion": "\n   def extract_rear(tuple_of_strings):\n       result = []\n       for string in tuple_of_strings:\n           result.append(string[-1])\n       return result\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2718,8 +2512,7 @@
             "assert count_element_in_list([[1, 3], [5, 7], [1, 11], [1, 15, 7]],1)==3",
             "assert count_element_in_list([['A', 'B'], ['A', 'C'], ['A', 'D', 'E'], ['B', 'C', 'D']],'A')==3",
             "assert count_element_in_list([['A', 'B'], ['A', 'C'], ['A', 'D', 'E'], ['B', 'C', 'D']],'E')==1"
-        ],
-        "completion": "\n   def count_element_in_list(list_of_lists, element):\n       counter = 0\n       for sublist in list_of_lists:\n           if element in sublist:\n               counter += 1\n       return counter\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2731,8 +2524,7 @@
             "assert filter_oddnumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])==[1,3,5,7,9]",
             "assert filter_oddnumbers([10,20,45,67,84,93])==[45,67,93]",
             "assert filter_oddnumbers([5,7,9,8,6,4,3])==[5,7,9,3]"
-        ],
-        "completion": "\ndef filter_oddnumbers(numbers):\n    return [num for num in numbers if num % 2 != 0]\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2744,8 +2536,7 @@
             "assert change_date_format(\"2026-01-02\") == '02-01-2026'",
             "assert change_date_format(\"2020-11-13\") == '13-11-2020'",
             "assert change_date_format(\"2021-04-26\") == '26-04-2021'"
-        ],
-        "completion": "\n   def change_date_format(date_str):\n       # Split the date string into year, month, and day\n       year, month, day = date_str.split('-')\n       # Rearrange and join to form the new date string\n       new_date_str = '-'.join([day, month, year])\n       return new_date_str\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2757,8 +2548,7 @@
             "assert shell_sort([12, 23, 4, 5, 3, 2, 12, 81, 56, 95]) == [2, 3, 4, 5, 12, 12, 23, 56, 81, 95]",
             "assert shell_sort([24, 22, 39, 34, 87, 73, 68]) == [22, 24, 34, 39, 68, 73, 87]",
             "assert shell_sort([32, 30, 16, 96, 82, 83, 74]) == [16, 30, 32, 74, 82, 83, 96]"
-        ],
-        "completion": "\ndef shell_sort(arr):\n    n = len(arr)\n    gap = n // 2\n\n    while gap > 0:\n        for i in range(gap, n):\n            temp = arr[i]\n            j = i\n            while j >= gap and arr[j - gap] > temp:\n                arr[j] = arr[j - gap]\n                j -= gap\n            arr[j] = temp\n        gap //= 2\n\n    return arr\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2770,8 +2560,7 @@
             "assert and_tuples((10, 4, 6, 9), (5, 2, 3, 3)) == (0, 0, 2, 1)",
             "assert and_tuples((1, 2, 3, 4), (5, 6, 7, 8)) == (1, 2, 3, 0)",
             "assert and_tuples((8, 9, 11, 12), (7, 13, 14, 17)) == (0, 9, 10, 0)"
-        ],
-        "completion": "\n   def and_tuples(tuple1, tuple2):\n       result = []\n       for i in range(len(tuple1)):\n           result.append(tuple1[i] & tuple2[i])\n       return tuple(result)\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2783,8 +2572,7 @@
             "assert parabola_directrix(5,3,2)==-198",
             "assert parabola_directrix(9,8,4)==-2336",
             "assert parabola_directrix(2,4,6)==-130"
-        ],
-        "completion": "\ndef parabola_directrix(a, b, c):\n    term = (1 + b**2) / (4 * a)\n    directrix = c - term\n    return int(directrix)  # Convert to integer as per the test cases\n\n# Test cases\nassert parabola_directrix(5, 3, 2) == -198\nassert parabola_directrix(9, 8, 4) == -2336\nassert parabola_directrix(2, 4, 6) == -130\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2796,8 +2584,7 @@
             "assert common_element([1,2,3,4,5], [5,6,7,8,9])==True",
             "assert common_element([1,2,3,4,5], [6,7,8,9])==None",
             "assert common_element(['a','b','c'], ['d','b','e'])==True"
-        ],
-        "completion": "\n   def common_element(list1, list2):\n       set1 = set(list1)\n       set2 = set(list2)\n       if set1.intersection(set2):\n           return True\n       else:\n           return None\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2809,8 +2596,7 @@
             "assert median_trapezium(15,25,35)==20",
             "assert median_trapezium(10,20,30)==15",
             "assert median_trapezium(6,9,4)==7.5"
-        ],
-        "completion": "\n   def median_trapezium(side1, side2, side3):\n       # Assuming side1 and side2 are the parallel sides\n       median_length = (side1 + side2) / 2\n       return median_length\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2822,8 +2608,7 @@
             "assert check_greater([1, 2, 3, 4, 5], 4) == False",
             "assert check_greater([2, 3, 4, 5, 6], 8) == True",
             "assert check_greater([9, 7, 4, 8, 6, 1], 11) == True"
-        ],
-        "completion": "\n   def check_greater(arr, num):\n       for element in arr:\n           if num <= element:\n               return False\n       return True\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2835,8 +2620,7 @@
             "assert text_match_one(\"ac\")==False",
             "assert text_match_one(\"dc\")==False",
             "assert text_match_one(\"abba\")==True"
-        ],
-        "completion": "\n   import re\n\n   def text_match_one(text):\n       patterns = 'ab+'\n       if re.search(patterns, text):\n           return True\n       else:\n           return False\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2848,8 +2632,7 @@
             "assert last_Digit(123) == 3",
             "assert last_Digit(25) == 5",
             "assert last_Digit(30) == 0"
-        ],
-        "completion": "\n   def last_Digit(number):\n       # Convert the number to a string\n       number_str = str(number)\n       # Get the last character of the string\n       last_char = number_str[-1]\n       # Convert the last character back to an integer\n       last_digit = int(last_char)\n       # Return the integer\n       return last_digit\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2861,8 +2644,7 @@
             "assert neg_nos([-1,4,5,-6]) == [-1,-6]",
             "assert neg_nos([-1,-2,3,4]) == [-1,-2]",
             "assert neg_nos([-7,-6,8,9]) == [-7,-6]"
-        ],
-        "completion": "\n   def neg_nos(numbers):\n       negative_numbers = []\n       for number in numbers:\n           if number < 0:\n               negative_numbers.append(number)\n       return negative_numbers\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2874,8 +2656,7 @@
             "assert remove_odd(\"python\")==(\"yhn\")",
             "assert remove_odd(\"program\")==(\"rga\")",
             "assert remove_odd(\"language\")==(\"agae\")"
-        ],
-        "completion": "\n   def remove_odd(input_string):\n       result = \"\"\n       for i in range(len(input_string)):\n           if i % 2 == 0:\n               result += input_string[i]\n       return result\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2887,8 +2668,7 @@
             "assert count_bidirectional([(5, 6), (1, 2), (6, 5), (9, 1), (6, 5), (2, 1)] ) == 3",
             "assert count_bidirectional([(5, 6), (1, 3), (6, 5), (9, 1), (6, 5), (2, 1)] ) == 2",
             "assert count_bidirectional([(5, 6), (1, 2), (6, 5), (9, 2), (6, 5), (2, 1)] ) == 4"
-        ],
-        "completion": "\n   def count_bidirectional(tuples):\n       count = 0\n       seen_pairs = set()\n       for a, b in tuples:\n           if (b, a) in tuples and (a, b) not in seen_pairs and (b, a) not in seen_pairs:\n               count += 1\n               seen_pairs.add((a, b))\n               seen_pairs.add((b, a))\n       return count\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2900,8 +2680,7 @@
             "assert multiple_to_single([11, 33, 50])==113350",
             "assert multiple_to_single([-1,2,3,4,5,6])==-123456",
             "assert multiple_to_single([10,15,20,25])==10152025"
-        ],
-        "completion": "\n   def multiple_to_single(lst):\n       result_str = \"\"\n       for num in lst:\n           result_str += str(num)\n       return int(result_str)\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2913,8 +2692,7 @@
             "assert find_adverb_position(\"clearly!! we can see the sky\")==(0, 7, 'clearly')",
             "assert find_adverb_position(\"seriously!! there are many roses\")==(0, 9, 'seriously')",
             "assert find_adverb_position(\"unfortunately!! sita is going to home\")==(0, 13, 'unfortunately')"
-        ],
-        "completion": "\ndef find_adverb_position(sentence):\n    words = sentence.split()\n    for word in words:\n        if word.endswith('ly'):\n            start_index = sentence.index(word)\n            end_index = start_index + len(word)\n            return (start_index, end_index, word)\n    return None\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2926,8 +2704,7 @@
             "assert surfacearea_cube(5)==150",
             "assert surfacearea_cube(3)==54",
             "assert surfacearea_cube(10)==600"
-        ],
-        "completion": "\ndef surfacearea_cube(side_length):\n    # Calculate the surface area using the formula\n    surface_area = 6 * (side_length ** 2)\n    return surface_area\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2939,8 +2716,7 @@
             "assert positive_count([0, 1, 2, -1, -5, 6, 0, -3, -2, 3, 4, 6, 8])==0.54",
             "assert positive_count([2, 1, 2, -1, -5, 6, 4, -3, -2, 3, 4, 6, 8])==0.69",
             "assert positive_count([2, 4, -6, -9, 11, -12, 14, -5, 17])==0.56"
-        ],
-        "completion": "\n   def positive_count(arr):\n       count_positive = sum(1 for x in arr if x > 0)\n       total_count = len(arr)\n       ratio = count_positive / total_count\n       return round(ratio, 2)\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2952,8 +2728,7 @@
             "assert largest_neg([1,2,3,-4,-6]) == -6",
             "assert largest_neg([1,2,3,-8,-9]) == -9",
             "assert largest_neg([1,2,3,4,-1]) == -1"
-        ],
-        "completion": "\n   def largest_neg(lst):\n       largest_negative = None\n       for number in lst:\n           if number < 0:\n               if largest_negative is None or number > largest_negative:\n                   largest_negative = number\n       return largest_negative\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2965,8 +2740,7 @@
             "assert trim_tuple([(5, 3, 2, 1, 4), (3, 4, 9, 2, 1),(9, 1, 2, 3, 5), (4, 8, 2, 1, 7)], 2) == '[(2,), (9,), (2,), (2,)]'",
             "assert trim_tuple([(5, 3, 2, 1, 4), (3, 4, 9, 2, 1), (9, 1, 2, 3, 5), (4, 8, 2, 1, 7)], 1) == '[(3, 2, 1), (4, 9, 2), (1, 2, 3), (8, 2, 1)]'",
             "assert trim_tuple([(7, 8, 4, 9), (11, 8, 12, 4),(4, 1, 7, 8), (3, 6, 9, 7)], 1) == '[(8, 4), (8, 12), (1, 7), (6, 9)]'"
-        ],
-        "completion": "\n   def trim_tuple(tuple_list, k):\n       result_list = []\n       for t in tuple_list:\n           trimmed_tuple = t[k:-k] if k < len(t) else ()\n           result_list.append(trimmed_tuple)\n       return str(result_list)\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2978,8 +2752,7 @@
             "assert index_multiplication(((1, 3), (4, 5), (2, 9), (1, 10)),((6, 7), (3, 9), (1, 1), (7, 3)) ) == ((6, 21), (12, 45), (2, 9), (7, 30))",
             "assert index_multiplication(((2, 4), (5, 6), (3, 10), (2, 11)),((7, 8), (4, 10), (2, 2), (8, 4)) ) == ((14, 32), (20, 60), (6, 20), (16, 44))",
             "assert index_multiplication(((3, 5), (6, 7), (4, 11), (3, 12)),((8, 9), (5, 11), (3, 3), (9, 5)) ) == ((24, 45), (30, 77), (12, 33), (27, 60))"
-        ],
-        "completion": "\n   def index_multiplication(tuple1, tuple2):\n       result = tuple(\n           tuple(tuple1[i][j] * tuple2[i][j] for j in range(len(tuple1[i])))\n           for i in range(len(tuple1))\n       )\n       return result\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -2991,8 +2764,7 @@
             "assert count_Occurrence(('a', 'a', 'c', 'b', 'd'),['a', 'b'] ) == 3",
             "assert count_Occurrence((1, 2, 3, 1, 4, 6, 7, 1, 4),[1, 4, 7]) == 6",
             "assert count_Occurrence((1,2,3,4,5,6),[1,2]) == 2"
-        ],
-        "completion": "\n   def count_Occurrence(t, lst):\n       counter = 0\n       for element in t:\n           if element in lst:\n               counter += 1\n       return counter\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3004,8 +2776,7 @@
             "assert cube_nums([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])==[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]",
             "assert cube_nums([10,20,30])==([1000, 8000, 27000])",
             "assert cube_nums([12,15])==([1728, 3375])"
-        ],
-        "completion": "\n   def cube_nums(numbers):\n       cubed_numbers = []\n       for number in numbers:\n           cubed_number = number ** 3\n           cubed_numbers.append(cubed_number)\n       return cubed_numbers\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3017,8 +2788,7 @@
             "assert cal_sum(9) == 49",
             "assert cal_sum(10) == 66",
             "assert cal_sum(11) == 88"
-        ],
-        "completion": "\n   def cal_sum(n):\n       if n == 0:\n           return 0\n       if n == 1:\n           return 3\n       if n == 2:\n           return 3\n       \n       perrin_numbers = [3, 0, 2]\n       sum_perrin = 5  # Sum of the first three Perrin numbers\n       \n       for i in range(3, n):\n           next_perrin = perrin_numbers[i-2] + perrin_numbers[i-3]\n           perrin_numbers.append(next_perrin)\n           sum_perrin += next_perrin\n       \n       return sum_perrin\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3030,8 +2800,7 @@
             "assert extract_string(['Python', 'list', 'exercises', 'practice', 'solution'] ,8)==['practice', 'solution']",
             "assert extract_string(['Python', 'list', 'exercises', 'practice', 'solution'] ,6)==['Python']",
             "assert extract_string(['Python', 'list', 'exercises', 'practice', 'solution'] ,9)==['exercises']"
-        ],
-        "completion": "\n   def extract_string(list_of_strings, length):\n       result = []\n       for string in list_of_strings:\n           if len(string) == length:\n               result.append(string)\n       return result\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3043,8 +2812,7 @@
             "assert remove_whitespaces(' Google    Flutter ') == 'GoogleFlutter'",
             "assert remove_whitespaces(' Google    Dart ') == 'GoogleDart'",
             "assert remove_whitespaces(' iOS    Swift ') == 'iOSSwift'"
-        ],
-        "completion": "\n   def remove_whitespaces(input_string):\n       result = ''\n       for char in input_string:\n           if not char.isspace():\n               result += char\n       return result\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3056,8 +2824,7 @@
             "assert loss_amount(1500,1200)==0",
             "assert loss_amount(100,200)==100",
             "assert loss_amount(2000,5000)==3000"
-        ],
-        "completion": "\n   def loss_amount(cost_price, sale_price):\n       if sale_price < cost_price:\n           return cost_price - sale_price\n       else:\n           return 0\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3069,8 +2836,7 @@
             "assert sumofFactors(18) == 26",
             "assert sumofFactors(30) == 48",
             "assert sumofFactors(6) == 8"
-        ],
-        "completion": "\n   def sumofFactors(number):\n       sum = 0\n       for i in range(1, number + 1):\n           if number % i == 0 and i % 2 == 0:\n               sum += i\n       return sum\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3082,8 +2848,7 @@
             "assert text_match_wordz(\"pythonz.\")==True",
             "assert text_match_wordz(\"xyz.\")==True",
             "assert text_match_wordz(\"  lang  .\")==False"
-        ],
-        "completion": "\n   import re\n\n   def text_match_wordz(text):\n       pattern = r'\\b\\w*z\\w*\\b'\n       match = re.search(pattern, text)\n       if match:\n           return True\n       else:\n           return False\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3095,8 +2860,7 @@
             "assert check_monthnumb_number(5)==True",
             "assert check_monthnumb_number(2)==False",
             "assert check_monthnumb_number(6)==False"
-        ],
-        "completion": "\n   def check_monthnumb_number(month_number):\n       list_of_31_days_months = [1, 3, 5, 7, 8, 10, 12]\n       return month_number in list_of_31_days_months\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3108,8 +2872,7 @@
             "assert reverse_string_list(['Red', 'Green', 'Blue', 'White', 'Black'])==['deR', 'neerG', 'eulB', 'etihW', 'kcalB']",
             "assert reverse_string_list(['john','amal','joel','george'])==['nhoj','lama','leoj','egroeg']",
             "assert reverse_string_list(['jack','john','mary'])==['kcaj','nhoj','yram']"
-        ],
-        "completion": "\n   def reverse_string_list(list_of_strings):\n       reversed_list = []\n       for string in list_of_strings:\n           reversed_string = string[::-1]\n           reversed_list.append(reversed_string)\n       return reversed_list\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3121,8 +2884,7 @@
             "assert Find_Min([[1],[1,2],[1,2,3]]) == [1]",
             "assert Find_Min([[1,1],[1,1,1],[1,2,7,8]]) == [1,1]",
             "assert Find_Min([['x'],['x','y'],['x','y','z']]) == ['x']"
-        ],
-        "completion": "\n   def Find_Min(list_of_sublists):\n       min_length = len(list_of_sublists[0])\n       min_sublist = list_of_sublists[0]\n       for sublist in list_of_sublists:\n           if len(sublist) < min_length:\n               min_length = len(sublist)\n               min_sublist = sublist\n       return min_sublist\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3134,8 +2896,7 @@
             "assert rectangle_area(10,20)==200",
             "assert rectangle_area(10,5)==50",
             "assert rectangle_area(4,2)==8"
-        ],
-        "completion": "\n   def rectangle_area(length, width):\n       area = length * width\n       return area\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3147,8 +2908,7 @@
             "assert remove_uppercase('cAstyoUrFavoRitETVshoWs') == 'cstyoravoitshos'",
             "assert remove_uppercase('wAtchTheinTernEtrAdIo') == 'wtchheinerntrdo'",
             "assert remove_uppercase('VoicESeaRchAndreComMendaTionS') == 'oiceachndreomendaion'"
-        ],
-        "completion": "\n   def remove_uppercase(input_string):\n       result = \"\"\n       for char in input_string:\n           if not char.isupper():\n               result += char\n       return result\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3160,8 +2920,7 @@
             "assert Extract([[1, 2], [3, 4, 5], [6, 7, 8, 9]]) == [1, 3, 6]",
             "assert Extract([[1,2,3],[4, 5]]) == [1,4]",
             "assert Extract([[9,8,1],[1,2]]) == [9,1]"
-        ],
-        "completion": "\n   def Extract(list_of_sublists):\n       result = []\n       for sublist in list_of_sublists:\n           if sublist:  # Check if sublist is not empty\n               result.append(sublist[0])\n       return result\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3173,8 +2932,7 @@
             "assert upper_ctr('PYthon') == 1",
             "assert upper_ctr('BigData') == 1",
             "assert upper_ctr('program') == 0"
-        ],
-        "completion": "\ndef upper_ctr(s):\n    count = 0\n    for char in s:\n        if char.isupper():\n            count += 1\n    return count\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3186,8 +2944,7 @@
             "assert combinations_list(['orange', 'red', 'green', 'blue'])==[[], ['orange'], ['red'], ['red', 'orange'], ['green'], ['green', 'orange'], ['green', 'red'], ['green', 'red', 'orange'], ['blue'], ['blue', 'orange'], ['blue', 'red'], ['blue', 'red', 'orange'], ['blue', 'green'], ['blue', 'green', 'orange'], ['blue', 'green', 'red'], ['blue', 'green', 'red', 'orange']]",
             "assert combinations_list(['red', 'green', 'blue', 'white', 'black', 'orange'])==[[], ['red'], ['green'], ['green', 'red'], ['blue'], ['blue', 'red'], ['blue', 'green'], ['blue', 'green', 'red'], ['white'], ['white', 'red'], ['white', 'green'], ['white', 'green', 'red'], ['white', 'blue'], ['white', 'blue', 'red'], ['white', 'blue', 'green'], ['white', 'blue', 'green', 'red'], ['black'], ['black', 'red'], ['black', 'green'], ['black', 'green', 'red'], ['black', 'blue'], ['black', 'blue', 'red'], ['black', 'blue', 'green'], ['black', 'blue', 'green', 'red'], ['black', 'white'], ['black', 'white', 'red'], ['black', 'white', 'green'], ['black', 'white', 'green', 'red'], ['black', 'white', 'blue'], ['black', 'white', 'blue', 'red'], ['black', 'white', 'blue', 'green'], ['black', 'white', 'blue', 'green', 'red'], ['orange'], ['orange', 'red'], ['orange', 'green'], ['orange', 'green', 'red'], ['orange', 'blue'], ['orange', 'blue', 'red'], ['orange', 'blue', 'green'], ['orange', 'blue', 'green', 'red'], ['orange', 'white'], ['orange', 'white', 'red'], ['orange', 'white', 'green'], ['orange', 'white', 'green', 'red'], ['orange', 'white', 'blue'], ['orange', 'white', 'blue', 'red'], ['orange', 'white', 'blue', 'green'], ['orange', 'white', 'blue', 'green', 'red'], ['orange', 'black'], ['orange', 'black', 'red'], ['orange', 'black', 'green'], ['orange', 'black', 'green', 'red'], ['orange', 'black', 'blue'], ['orange', 'black', 'blue', 'red'], ['orange', 'black', 'blue', 'green'], ['orange', 'black', 'blue', 'green', 'red'], ['orange', 'black', 'white'], ['orange', 'black', 'white', 'red'], ['orange', 'black', 'white', 'green'], ['orange', 'black', 'white', 'green', 'red'], ['orange', 'black', 'white', 'blue'], ['orange', 'black', 'white', 'blue', 'red'], ['orange', 'black', 'white', 'blue', 'green'], ['orange', 'black', 'white', 'blue', 'green', 'red']]",
             "assert combinations_list(['red', 'green', 'black', 'orange'])==[[], ['red'], ['green'], ['green', 'red'], ['black'], ['black', 'red'], ['black', 'green'], ['black', 'green', 'red'], ['orange'], ['orange', 'red'], ['orange', 'green'], ['orange', 'green', 'red'], ['orange', 'black'], ['orange', 'black', 'red'], ['orange', 'black', 'green'], ['orange', 'black', 'green', 'red']]"
-        ],
-        "completion": "\n   def combinations_list(lst):\n       def helper(current_combination, start_index):\n           result.append(current_combination)\n           for i in range(start_index, len(lst)):\n               helper(current_combination + [lst[i]], i + 1)\n       \n       result = []\n       helper([], 0)\n       return result\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3199,8 +2956,7 @@
             "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112",
             "assert max_subarray_product([6, -3, -10, 0, 2]) == 180",
             "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80"
-        ],
-        "completion": "\n   def max_subarray_product(arr):\n       max_ending_here = 1\n       min_ending_here = 1\n       max_so_far = float('-inf')\n       \n       for num in arr:\n           if num == 0:\n               max_ending_here = 1\n               min_ending_here = 1\n           else:\n               temp = max_ending_here\n               max_ending_here = max(num, max_ending_here * num, min_ending_here * num)\n               min_ending_here = min(num, temp * num, min_ending_here * num)\n               \n               max_so_far = max(max_so_far, max_ending_here)\n       \n       return max_so_far\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3212,8 +2968,7 @@
             "assert check_value({'Cierra Vega': 12, 'Alden Cantrell': 12, 'Kierra Gentry': 12, 'Pierre Cox': 12},10)==False",
             "assert check_value({'Cierra Vega': 12, 'Alden Cantrell': 12, 'Kierra Gentry': 12, 'Pierre Cox': 12},12)==True",
             "assert check_value({'Cierra Vega': 12, 'Alden Cantrell': 12, 'Kierra Gentry': 12, 'Pierre Cox': 12},5)==False"
-        ],
-        "completion": "\ndef check_value(dictionary, value):\n    for dict_value in dictionary.values():\n        if dict_value != value:\n            return False\n    return True\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3225,8 +2980,7 @@
             "assert drop_empty({'c1': 'Red', 'c2': 'Green', 'c3':None})=={'c1': 'Red', 'c2': 'Green'}",
             "assert drop_empty({'c1': 'Red', 'c2': None, 'c3':None})=={'c1': 'Red'}",
             "assert drop_empty({'c1': None, 'c2': 'Green', 'c3':None})=={ 'c2': 'Green'}"
-        ],
-        "completion": "\n   def drop_empty(dictionary):\n       new_dictionary = {}\n       for key, value in dictionary.items():\n           if value is not None:\n               new_dictionary[key] = value\n       return new_dictionary\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3238,8 +2992,7 @@
             "assert max_product([3, 100, 4, 5, 150, 6]) == 3000",
             "assert max_product([4, 42, 55, 68, 80]) == 50265600",
             "assert max_product([10, 22, 9, 33, 21, 50, 41, 60]) == 2460"
-        ],
-        "completion": "\ndef max_product(arr):\n    def product(subseq):\n        prod = 1\n        for num in subseq:\n            prod *= num\n        return prod\n    \n    def find_increasing_subsequences(arr, index, path, all_subsequences):\n        if index == len(arr):\n            if len(path) > 1:\n                all_subsequences.append(path[:])\n            return\n        \n        find_increasing_subsequences(arr, index + 1, path, all_subsequences)\n        \n        if not path or arr[index] > path[-1]:\n            path.append(arr[index])\n            find_increasing_subsequences(arr, index + 1, path, all_subsequences)\n            path.pop()\n    \n    all_subsequences = []\n    find_increasing_subsequences(arr, 0, [], all_subsequences)\n    \n    max_prod = 0\n    for subsequence in all_subsequences:\n        prod = product(subsequence)\n        if prod > max_prod:\n            max_prod = prod\n    \n    return max_prod\n\n# Test cases\nassert max_product([3, 100, 4, 5, 150, 6]) == 3000\nassert max_product([4, 42, 55, 68, 80]) == 50265600\nassert max_product([10, 22, 9, 33, 21, 50, 41, 60]) == 2460\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3251,8 +3004,7 @@
             "assert add_pairwise((1, 5, 7, 8, 10)) == (6, 12, 15, 18)",
             "assert add_pairwise((2, 6, 8, 9, 11)) == (8, 14, 17, 20)",
             "assert add_pairwise((3, 7, 9, 10, 12)) == (10, 16, 19, 22)"
-        ],
-        "completion": "\n   def add_pairwise(input_tuple):\n       result_list = []\n       for i in range(len(input_tuple) - 1):\n           sum_of_neighbors = input_tuple[i] + input_tuple[i + 1]\n           result_list.append(sum_of_neighbors)\n       return tuple(result_list)\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3264,8 +3016,7 @@
             "assert find_remainder([ 100, 10, 5, 25, 35, 14 ],11) ==9",
             "assert find_remainder([1,1,1],1) == 0",
             "assert find_remainder([1,2,1],2) == 0"
-        ],
-        "completion": "\n   def find_remainder(arr, n):\n       product = 1\n       for element in arr:\n           product = (product * element) % n\n       return product\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3277,8 +3028,7 @@
             "assert check_Consecutive([1,2,3,4,5]) == True",
             "assert check_Consecutive([1,2,3,5,6]) == False",
             "assert check_Consecutive([1,2,1]) == False"
-        ],
-        "completion": "\n   def check_Consecutive(lst):\n       lst.sort()\n       for i in range(1, len(lst)):\n           if lst[i] != lst[i-1] + 1:\n               return False\n       return True\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3290,8 +3040,7 @@
             "assert tuple_intersection([(3, 4), (5, 6), (9, 10), (4, 5)] , [(5, 4), (3, 4), (6, 5), (9, 11)]) == {(4, 5), (3, 4), (5, 6)}",
             "assert tuple_intersection([(4, 1), (7, 4), (11, 13), (17, 14)] , [(1, 4), (7, 4), (16, 12), (10, 13)]) == {(4, 7), (1, 4)}",
             "assert tuple_intersection([(2, 1), (3, 2), (1, 3), (1, 4)] , [(11, 2), (2, 3), (6, 2), (1, 3)]) == {(1, 3), (2, 3)}"
-        ],
-        "completion": "\n   def tuple_intersection(list1, list2):\n       set1 = {frozenset(t) for t in list1}\n       result_set = {tuple(sorted(t)) for t in list2 if frozenset(t) in set1}\n       return result_set\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3303,8 +3052,7 @@
             "assert replace_char(\"polygon\",'y','l')==(\"pollgon\")",
             "assert replace_char(\"character\",'c','a')==(\"aharaater\")",
             "assert replace_char(\"python\",'l','a')==(\"python\")"
-        ],
-        "completion": "\n   def replace_char(input_string, char_to_replace, replacement_char):\n       if char_to_replace not in input_string:\n           return input_string\n       new_string = \"\"\n       for character in input_string:\n           if character == char_to_replace:\n               new_string += replacement_char\n           else:\n               new_string += character\n       return new_string\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3316,8 +3064,7 @@
             "assert sort_counter({'Math':81, 'Physics':83, 'Chemistry':87})==[('Chemistry', 87), ('Physics', 83), ('Math', 81)]",
             "assert sort_counter({'Math':400, 'Physics':300, 'Chemistry':250})==[('Math', 400), ('Physics', 300), ('Chemistry', 250)]",
             "assert sort_counter({'Math':900, 'Physics':1000, 'Chemistry':1250})==[('Chemistry', 1250), ('Physics', 1000), ('Math', 900)]"
-        ],
-        "completion": "\n   def sort_counter(dictionary):\n       sorted_list = sorted(dictionary.items(), key=lambda item: item[1], reverse=True)\n       return sorted_list\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3329,8 +3076,7 @@
             "assert big_sum([1,2,3]) == 4",
             "assert big_sum([-1,2,3,4]) == 3",
             "assert big_sum([2,3,6]) == 8"
-        ],
-        "completion": "\n   def big_sum(arr):\n       max_val = max(arr)\n       min_val = min(arr)\n       return max_val + min_val\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3342,8 +3088,7 @@
             "assert is_lower(\"InValid\") == \"invalid\"",
             "assert is_lower(\"TruE\") == \"true\"",
             "assert is_lower(\"SenTenCE\") == \"sentence\""
-        ],
-        "completion": "\ndef is_lower(s):\n    return s.lower()\n"
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3355,8 +3100,7 @@
             "assert remove_lowercase(\"PYTHon\")==('PYTH')",
             "assert remove_lowercase(\"FInD\")==('FID')",
             "assert remove_lowercase(\"STRinG\")==('STRG')"
-        ],
-        "completion": "\n   def remove_lowercase(input_string):\n       result_string = \"\"\n       for char in input_string:\n           if not char.islower():\n               result_string += char\n       return result_string\n   "
+        ]
     },
     {
         "source_file": "charlessutton@: Benchmark Questions Verification V2.ipynb",
@@ -3368,7 +3112,6 @@
             "assert first_Digit(123) == 1",
             "assert first_Digit(456) == 4",
             "assert first_Digit(12) == 1"
-        ],
-        "completion": "\n   def first_Digit(number):\n       # Convert the number to a string\n       number_str = str(number)\n       # Get the first character of the string\n       first_char = number_str[0]\n       # Convert the first character back to an integer\n       first_digit = int(first_char)\n       # Return the integer\n       return first_digit\n   "
+        ]
     }
 ]

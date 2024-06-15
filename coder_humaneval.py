@@ -81,7 +81,7 @@ def fetch_completion(
                 completion = completions.choices[0]["message"]["content"]
                 completion = preprocess_data(completion)
             except Exception as e:
-                print(e)
+                print(repr(e))
                 time.sleep(10)
                 completion = ""
             if completion != "":
@@ -100,9 +100,13 @@ def call_fetch_completion_helper(
             executor.submit(
                 fetch_completion, copy.deepcopy(entry), model, language
             ): entry
-            for entry in tqdm(dataset, desc="Generating code", total=len(dataset))
+            for entry in tqdm(dataset, total=len(dataset))
         }
-        for future in tqdm(concurrent.futures.as_completed(future_to_entry), desc="Updating code", total=len(dataset)):
+        for future in tqdm(
+            concurrent.futures.as_completed(future_to_entry),
+            desc="Updating code",
+            total=len(dataset),
+        ):
             entry = future_to_entry[future]
             try:
                 updated_entry = future.result()
@@ -116,7 +120,6 @@ def call_fetch_completion_helper(
 if __name__ == "__main__":
     model = "deepseek-coder"
     language = "python"
-
 
     with ThreadPoolExecutor(max_workers=5) as executor:
         future_to_entry = {

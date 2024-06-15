@@ -375,7 +375,6 @@ def check_correctness(
         # "test_code"    : sample["test_code"],
         # "prompt"       : sample["prompt"],
         # "generation"   : sample["generation"],
-        # "result"       : result[0],
         "passed"       : result[0] == "passed",
         # "finish"       : -1 if "finish" not in sample else sample["finish"],
         # "file"         : "" if "file" not in sample else sample["file"],

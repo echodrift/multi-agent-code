@@ -2,8 +2,9 @@ import concurrent.futures
 import copy
 import json
 import os
+import time
 from concurrent.futures import ThreadPoolExecutor
-from typing import Callable, List
+from typing import List
 
 import openai
 from datasets import load_dataset
@@ -25,30 +26,35 @@ dataset = load_dataset("mbpp", name="sanitized", split="test")
 dataset = [entry for entry in dataset]
 
 
-def preprocess_data(data: dict, language: str = "python"):
-    if f"```{language}" in data["completion"]:
-        data["completion"] = data["completion"][
-            data["completion"].find(f"```{language}") + len(f"```{language}") :
+def preprocess_data(completion_string: str, language: str = "python"):
+    """Get the code block from the LLM answer
+
+    Args:
+        completion_string (str): LLM answer
+
+    Returns:
+        str: code block
+    """
+    if f"```{language}" in completion_string:
+        completion_string = completion_string[
+            completion_string.find(f"```{language}") + len(f"```{language}") :
         ]
-        data["completion"] = data["completion"][
-            : data["completion"].find("```")
-        ]
+        completion_string = completion_string[: completion_string.find("```")]
     else:
-        print(data["task_id"])
-    return data
+        print("Error: No code block found")
+    return completion_string
 
 
 # Function to fetch completion
-def fetch_completion(data_entry: dict, model: str, language: str = "python"):
+def fetch_completion(
+    data_entry: dict, model: str, language: str = "python", times: int = 1
+):
     global construct_few_shot_prompt
     language = "python"
     if "passed" in data_entry.keys() and data_entry["passed"] == True:
         return data_entry
     prompt = data_entry["prompt"]
     test_case = data_entry["test_list"]
-    tests = ""
-    # for test in test_case:
-    #     tests += "\n"+test
     tests = "\n".join(test_case)
     text = f"""
 {construct_few_shot_prompt}
@@ -57,72 +63,44 @@ def fetch_completion(data_entry: dict, model: str, language: str = "python"):
 ```{language}
 {prompt}
 ```
+
 Your code should pass these tests:
 ```{language}
 {tests}
 ```
 """
-    try:
-        completions = openai.ChatCompletion.create(
-            model=model,
-            stream=False,
-            messages=[
-                {"role": "system", "content": "You are a code developer."},
-                {"role": "user", "content": text},
-            ],
-            request_timeout=100,
-        )
-        data_entry["completion"] = completions.choices[0]["message"]["content"]
-        data_entry = preprocess_data(data_entry, language)
-        return data_entry
-    except Exception as e:
-        print(repr(e))
-        data_entry["completion"] = ""
-        return data_entry
-
-
-def fix_bug(
-    data_entry: dict,
-    model: str,
-    language: str = "python",
-    preprocess_data: Callable = preprocess_data,
-):
-    if "passed" in data_entry.keys() and data_entry["passed"] == True:
-        return data_entry
-    else:
-        gpt_prompt = (
-            "Please re-completion the code to fix the error message. "
-            + f"\nHere is the previous version:\n```{language}\n"
-            + data_entry["completion"]
-            + f"\n```\nWhen we use this test cases: ```{language}\n"
-            + data_entry["test_case"]
-            + f"\n``` to evaluate the code. It raise the error:\n```{language}\n"
-            + data_entry["result"]
-            + f"\n```\nPlease fix the bug and return the code. The re-completion code should in triple backticks format(i.e., in ```{language} ```)."
-        )
-        try:
-            completions = openai.ChatCompletion.create(
-                model=model,
-                stream=False,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are a code developer assistant.",
-                    },
-                    {"role": "user", "content": gpt_prompt},
-                ],
-                request_timeout=100,
-            )
-            data_entry["completion"] = completions.choices[0]["message"][
-                "content"
-            ]
-            data_entry = preprocess_data(data_entry, language)
-        except Exception as e:
-            print(repr(e))
+    completion_codes = []
+    for _ in range(times):
+        while True:
+            try:
+                completions = openai.ChatCompletion.create(
+                    model=model,
+                    stream=False,
+                    messages=[
+                        {
+                            "role": "system",
+                            "content": "You are a code developer.",
+                        },
+                        {"role": "user", "content": text},
+                    ],
+                    request_timeout=100,
+                )
+                completion = completions.choices[0]["message"]["content"]
+                completion = preprocess_data(completion, language)
+            except Exception as e:
+                print(repr(e))
+                time.sleep(10)
+                completion = ""
+            if completion != "":
+                break
+        completion_codes.append(completion)
+    data_entry["completion_list"] = completion_codes
     return data_entry
 
 
-def call_fix_bug(dataset: List[dict], model: str, language: str = "python"):
+def call_fetch_completion(
+    dataset: List[dict], model: str, language: str = "python"
+):
     print("Fixing bug...")
     with ThreadPoolExecutor() as executor:
         future_to_entry = {
@@ -131,27 +109,11 @@ def call_fix_bug(dataset: List[dict], model: str, language: str = "python"):
             ): entry
             for entry in tqdm(dataset)
         }
-        for future in tqdm(concurrent.futures.as_completed(future_to_entry)):
-            entry = future_to_entry[future]
-            try:
-                updated_entry = future.result()
-                idx = dataset.index(entry)
-                dataset[idx] = updated_entry
-            except Exception as e:
-                print(repr(e))
-    return dataset
-
-
-def call_completion(dataset: List[dict], model: str, language: str = "python"):
-    print("Fixing bug...")
-    with ThreadPoolExecutor() as executor:
-        future_to_entry = {
-            executor.submit(
-                fetch_completion, copy.deepcopy(entry), model, language
-            ): entry
-            for entry in tqdm(dataset)
-        }
-        for future in tqdm(concurrent.futures.as_completed(future_to_entry)):
+        for future in tqdm(
+            concurrent.futures.as_completed(future_to_entry),
+            total=len(dataset),
+            desc="Updating code",
+        ):
             entry = future_to_entry[future]
             try:
                 updated_entry = future.result()
@@ -165,15 +127,13 @@ def call_completion(dataset: List[dict], model: str, language: str = "python"):
 if __name__ == "__main__":
     model = "deepseek-coder"
     language = "python"
-
+    dataset = dataset[0:10]
     with ThreadPoolExecutor(max_workers=20) as executor:
         future_to_entry = {
             executor.submit(
                 fetch_completion, copy.deepcopy(entry), model, language
             ): entry
-            for entry in tqdm(
-                dataset, total=len(dataset), desc="Generating code"
-            )
+            for entry in tqdm(dataset, total=len(dataset))
         }
         for future in tqdm(
             concurrent.futures.as_completed(future_to_entry),

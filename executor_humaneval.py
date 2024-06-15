@@ -10,7 +10,7 @@ import concurrent.futures
 import signal
 
 from codegeex.benchmark.execution import check_correctness
-from codegeex.benchmark.utils import IMPORT_HELPER
+from codegeex.benchmark.utils import IMPORT_HELPER, read_dataset
 from tqdm import tqdm
 
 from coder_humaneval import call_fetch_completion_helper
@@ -64,78 +64,6 @@ def time_limit(seconds: float):
         signal.setitimer(signal.ITIMER_REAL, 0)
 
 
-def process_humaneval_test(
-    sample, problems, example_test=False, language="python", test_case=True
-):
-    task_id = sample["task_id"]
-    task_id = problems.index(sample)
-    prompt = sample["prompt"]
-    if (
-        example_test
-        and "example_test" in problems[task_id]
-        and problems[task_id]["example_test"] != ""
-    ):
-        test = problems[task_id]["example_test"]
-    else:
-        test = problems[task_id]["test"]
-    if test_case:
-        test = problems[task_id]["test_case"]
-    code = sample["completion"]
-    # Pre-process for different languages
-    if language == "python":
-        test_setup = "\n".join(IMPORT_HELPER["python"]) + "\n"
-        if f"class {sample['entry_point']}" in code:
-            test_string = (
-                test_setup
-                + code
-                + "\n"
-                + test
-                + "\n"
-                + f"check({sample['entry_point']})"
-            )
-        else:
-            test_string = (
-                test_setup
-                + prompt
-                + code
-                + "\n"
-                + test
-                + "\n"
-                + f"check({sample['entry_point']})"
-            )
-    return test_string
-
-
-def preprocess_data(task, language: str = "python"):
-    if f"```{language}" in task["completion"]:
-        task["completion"] = task["completion"][
-            task["completion"].find(f"```{language}") + len(f"```{language}") :
-        ]
-        task["completion"] = task["completion"][
-            : task["completion"].find("```")
-        ]
-    elif "```" in task["completion"]:
-        task["completion"] = task["completion"][
-            task["completion"].find("```") + 3 :
-        ]
-        task["completion"] = task["completion"][
-            : task["completion"].find("```")
-        ]
-
-    if f"```{language}" in task["prompt"]:
-        task["prompt"] = task["prompt"][
-            task["prompt"].find(f"```{language}") + len(f"```{language}") :
-        ]
-        task["prompt"] = task["prompt"][: task["prompt"].find("```")]
-    elif "```" in task["prompt"]:
-        task["prompt"] = task["prompt"][task["prompt"].find("```") + 3 :]
-        task["prompt"] = task["prompt"][: task["prompt"].find("```")]
-
-    if "assert" in task["prompt"]:
-        task["prompt"] = task["prompt"][: task["prompt"].find("assert")]
-    return task
-
-
 def test_report(dataset, language="python"):
     correct = 0
     test_setup = "\n".join(IMPORT_HELPER[language]) + "\n"
@@ -185,7 +113,6 @@ def test_agent_concurrency(dataset, language):
                     not in test_case_list[k]
                 ):
                     continue
-                # dataset[i]["full_code"] = test_setup + "\n" + completion_list[j] + "\n" + test_case_list[k]
                 dataset[i]["test_code"] = (
                     test_setup
                     + "\n"
@@ -193,7 +120,6 @@ def test_agent_concurrency(dataset, language):
                     + "\n"
                     + test_case_list[k]
                 )
-                # print(dataset[i]["task_id"], dataset[i], language, 3, "../tmp")
                 result = check_correctness(
                     dataset[i]["task_id"], dataset[i], language, 3, f"{CWD}/tmp"
                 )
@@ -237,8 +163,8 @@ if __name__ == "__main__":
     model = "deepseek-coder"
     language = "python"
 
-    path = f"{CWD}/data/{model}_{language}.json"
-
+    # path = f"{CWD}/data/{model}_{language}.json"
+    path = "/home/hieuvd/lvdthieu/tempo/vdt-multi-agent/data/deepseek-coder_2.json"
     with open(path, "r") as f:
         dataset = json.load(f)
     epoch = 5
