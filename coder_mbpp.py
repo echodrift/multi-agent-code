@@ -15,7 +15,7 @@ load_dotenv(override=True)
 
 # Setting API parameters
 openai.api_base = "https://api.deepseek.com"
-openai.api_key = os.environ.get("OPEN_API_KEY")
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 prompt_path = f"{CWD}/prompts/coder_prompt_mbpp.txt"
 with open(prompt_path, "r") as f:
@@ -46,7 +46,6 @@ def fetch_completion(data_entry: dict, model: str, language: str = "python"):
         return data_entry
     prompt = data_entry["prompt"]
     test_case = data_entry["test_list"]
-    code = data_entry["completion"]
     tests = ""
     # for test in test_case:
     #     tests += "\n"+test
@@ -167,16 +166,20 @@ if __name__ == "__main__":
     model = "deepseek-coder"
     language = "python"
 
-    # with open(path, "r") as f:
-    #     dataset = json.load(f)
     with ThreadPoolExecutor(max_workers=20) as executor:
         future_to_entry = {
             executor.submit(
                 fetch_completion, copy.deepcopy(entry), model, language
             ): entry
-            for entry in tqdm(dataset)
+            for entry in tqdm(
+                dataset, total=len(dataset), desc="Generating code"
+            )
         }
-        for future in tqdm(concurrent.futures.as_completed(future_to_entry)):
+        for future in tqdm(
+            concurrent.futures.as_completed(future_to_entry),
+            total=len(dataset),
+            desc="Updating code",
+        ):
             entry = future_to_entry[future]
             try:
                 updated_entry = future.result()

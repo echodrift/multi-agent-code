@@ -106,7 +106,7 @@ def process_humaneval_test(
     return test_string
 
 
-def preprocess_data(task, language: str="python"):
+def preprocess_data(task, language: str = "python"):
     if f"```{language}" in task["completion"]:
         task["completion"] = task["completion"][
             task["completion"].find(f"```{language}") + len(f"```{language}") :
@@ -237,8 +237,8 @@ if __name__ == "__main__":
     model = "deepseek-coder"
     language = "python"
 
-    # path = f"{CWD}/data/{model}_{language}.json"
-    path = "/home/hieuvd/lvdthieu/tempo/vdt-multi-agent/data/deepseek-coder_2.json"
+    path = f"{CWD}/data/{model}_{language}.json"
+
     with open(path, "r") as f:
         dataset = json.load(f)
     epoch = 5
