@@ -128,5 +128,5 @@ if __name__ == "__main__":
             except Exception as e:
                 print(repr(e))
 
-    with open(f"{CWD}/data/{model}_mbpp.json", "w") as f:
+    with open(f"{CWD}/data/{model}_mbpp_test.json", "w") as f:
         json.dump(dataset, f, indent=4)
