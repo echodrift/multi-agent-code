@@ -104,7 +104,6 @@ def test_agent(dataset: List[dict], language: str = "python"):
                     + "\n"
                     + tests.strip()
                 )
-                print(dataset[i]["test_code"])
                 result = check_correctness(
                     dataset[i]["task_id"], dataset[i], language, 5, f"{CWD}/tmp"
                 )
@@ -126,11 +125,12 @@ if __name__ == "__main__":
     model = "deepseek-coder"
     language = "python"
 
-    path = f"{CWD}/data/{model}_mbpp.json"
+    # path = f"{CWD}/data/{model}_mbpp.json"
+    path = "/home/hieuvd/lvdthieu/tempo/multi-agent-code/data/deepseek-coder_2_mbpp_total.json"
     with open(path, "r") as f:
         dataset = json.load(f)
-    epoch = 3
-    for current_epoch in tqdm(range(epoch), desc="Epoch"):
+    epoch = 5
+    for current_epoch in tqdm(range(3, epoch), desc="Epoch"):
         dataset = test_agent(dataset, language)
         test_report(dataset, language)
         dataset = call_fetch_completion(dataset, model, language)
