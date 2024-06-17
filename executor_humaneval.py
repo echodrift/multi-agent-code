@@ -68,9 +68,19 @@ def test_report(dataset, language="python"):
     correct = 0
     test_setup = "\n".join(IMPORT_HELPER[language]) + "\n"
     for i in tqdm(range(len(dataset)), desc="Executing code"):
-        try:
-            with swallow_io():
+        if i == 159:
+            try:
+                # with swallow_io():
                 with time_limit(2.0):
+                    tmp = (
+                        test_setup
+                        + "\n"
+                        + dataset[i]["completion"]
+                        + "\n"
+                        + dataset[i]["test"]
+                        + "\n"
+                        + f"check({dataset[i]['entry_point']})"
+                    )
                     exec(
                         test_setup
                         + "\n"
@@ -81,8 +91,12 @@ def test_report(dataset, language="python"):
                         + f"check({dataset[i]['entry_point']})"
                     )
                 correct += 1
-        except Exception as exc:
-            pass
+                
+                # with open("human4.txt", 'a') as f:
+                #     f.write(f'{i}\n')
+            except Exception as exc:
+                print(tmp)
+                pass
     print("==============Start Report Testing==============")
     print(f"test_report: {(correct/len(dataset)*100):.1f}")
 
@@ -164,23 +178,23 @@ if __name__ == "__main__":
     language = "python"
 
     # path = f"{CWD}/data/{model}_{language}.json"
-    path = "/home/hieuvd/lvdthieu/tempo/vdt-multi-agent/data/deepseek-coder_2.json"
+    path = "/home/hieuvd/lvdthieu/tempo/multi-agent-code/data/deepseek-coder_3_humaneval.json"
     with open(path, "r") as f:
         dataset = json.load(f)
-    epoch = 5
-    for current_epoch in tqdm(range(3, epoch), desc="Epoch"):
-        dataset = test_agent_concurrency(dataset, language)
-        test_report(dataset, language)
-        dataset = call_fetch_completion_helper(dataset, model, language)
-        dataset = call_fetch_test_completion_helper(dataset, model, language)
-        with open(f"{CWD}/data/{model}_{current_epoch}.json", "w") as f:
-            json.dump(dataset, f, indent=4)
+    # epoch = 5
+    # for current_epoch in tqdm(range(3, epoch), desc="Epoch"):
+    #     dataset = test_agent_concurrency(dataset, language)
+    #     test_report(dataset, language)
+    #     dataset = call_fetch_completion_helper(dataset, model, language)
+    #     dataset = call_fetch_test_completion_helper(dataset, model, language)
+    #     with open(f"{CWD}/data/{model}_{current_epoch}.json", "w") as f:
+    #         json.dump(dataset, f, indent=4)
 
-    dataset = test_agent_concurrency(dataset, language)
-    test_report(dataset, language)
-    with open(f"{CWD}/data/deepseek-coder_python.json", "r") as f:
-        dataset = json.load(f)
-    for i in range(len(dataset)):
-        dataset[i]["completion"] = dataset[i]["completion_list"][0]
-    language = "python"
+    # dataset = test_agent_concurrency(dataset, language)
+    # test_report(dataset, language)
+    # with open(f"{CWD}/data/deepseek-coder_python.json", "r") as f:
+    #     dataset = json.load(f)
+    # for i in range(len(dataset)):
+    #     dataset[i]["completion"] = dataset[i]["completion_list"][0]
+    # language = "python"
     test_report(dataset, language)
