@@ -13,6 +13,7 @@ from tqdm import tqdm
 
 CWD = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(override=True)
+
 # Setting API parameters
 openai.api_base = "https://api.deepseek.com"
 openai.api_key = os.environ.get("OPENAI_API_KEY")
